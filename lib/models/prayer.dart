@@ -16,6 +16,13 @@ class Prayer {
       text: json['text'] as String? ?? '',
     );
   }
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) || other is Prayer && id == other.id;
+
+  @override
+  int get hashCode => id.hashCode;
 }
 
 class PrayerCategory {
@@ -43,4 +50,11 @@ class PrayerCategory {
           .toList(),
     );
   }
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) || other is PrayerCategory && id == other.id;
+
+  @override
+  int get hashCode => id.hashCode;
 }

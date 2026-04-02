@@ -286,6 +286,10 @@ class DataService {
       if (response.statusCode == 200 &&
           response.body.trimLeft().startsWith('{')) {
         final data = json.decode(response.body) as Map<String, dynamic>;
+        if (!data.containsKey(year.toString())) {
+          debugPrint('[DataService] OCMA response for $year missing year key');
+          return null;
+        }
         await prefs.setString(cacheKey, response.body);
         _ocmaYearCache[year] = data;
         return data;

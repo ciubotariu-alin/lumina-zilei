@@ -31,26 +31,46 @@ class MainNavigator extends StatefulWidget {
 
 class _MainNavigatorState extends State<MainNavigator> {
   int _selectedIndex = 0;
-  // Screen-urile vizitate — indexul 0 e activ de la start
-  final Set<int> _visitedScreens = {0};
-  late final List<Widget> _screens;
+  // Cache lazy — ecranele sunt create doar la prima vizită
+  final Map<int, Widget> _builtScreens = {};
+
+  int get _screenCount =>
+      4 + (FeatureFlags.donationsEnabled ? 1 : 0);
+
+  Widget _getScreen(int index) {
+    return _builtScreens.putIfAbsent(index, () => _createScreen(index));
+  }
+
+  Widget _createScreen(int index) {
+    switch (index) {
+      case 0:
+        return HomeScreen(onNavigate: _onItemTapped);
+      case 1:
+        return const CalendarScreen();
+      case 2:
+        return const PrayersScreen();
+      case 3:
+        return const BibleScreen();
+      case 4:
+        return FeatureFlags.donationsEnabled
+            ? const DonationsScreen()
+            : const SizedBox.shrink();
+      default:
+        return const SizedBox.shrink();
+    }
+  }
 
   @override
   void initState() {
     super.initState();
-    _screens = [
-      HomeScreen(onNavigate: _onItemTapped),
-      const CalendarScreen(),
-      const PrayersScreen(),
-      const BibleScreen(),
-      if (FeatureFlags.donationsEnabled) const DonationsScreen(),
-    ];
+    // Creează ecranul de start (index 0) imediat
+    _builtScreens[0] = _createScreen(0);
   }
 
   void _onItemTapped(int index) {
+    _getScreen(index); // instanțiază și cachează înainte de rebuild
     setState(() {
       _selectedIndex = index;
-      _visitedScreens.add(index);
     });
   }
 
@@ -59,9 +79,9 @@ class _MainNavigatorState extends State<MainNavigator> {
     return Scaffold(
       body: IndexedStack(
         index: _selectedIndex,
-        children: List.generate(_screens.length, (i) {
-          if (!_visitedScreens.contains(i)) return const SizedBox.shrink();
-          return _screens[i];
+        children: List.generate(_screenCount, (i) {
+          if (!_builtScreens.containsKey(i)) return const SizedBox.shrink();
+          return _builtScreens[i]!;
         }),
       ),
       bottomNavigationBar: BottomNavigationBar(

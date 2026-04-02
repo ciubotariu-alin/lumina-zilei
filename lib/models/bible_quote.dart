@@ -21,4 +21,16 @@ class BibleQuote {
   }
 
   String get reference => '$carte $capitol:$verset';
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is BibleQuote &&
+          carte == other.carte &&
+          capitol == other.capitol &&
+          verset == other.verset &&
+          text == other.text;
+
+  @override
+  int get hashCode => Object.hash(carte, capitol, verset, text);
 }

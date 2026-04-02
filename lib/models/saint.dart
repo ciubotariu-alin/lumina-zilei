@@ -9,6 +9,13 @@ class Saint {
 
   @override
   String toString() => name;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) || other is Saint && name == other.name;
+
+  @override
+  int get hashCode => name.hashCode;
 }
 
 class CalendarDay {
@@ -56,4 +63,16 @@ class CalendarDay {
     if (first.length > 40) return '${first.substring(0, 38)}...';
     return first;
   }
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is CalendarDay &&
+          date == other.date &&
+          sarbatoare == other.sarbatoare &&
+          apostol == other.apostol &&
+          evanghelie == other.evanghelie;
+
+  @override
+  int get hashCode => Object.hash(date, sarbatoare, apostol, evanghelie);
 }

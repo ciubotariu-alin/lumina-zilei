@@ -35,7 +35,7 @@ class _DonationsScreenState extends State<DonationsScreen> {
       _selectedAmount = amount;
       _customController.clear();
     });
-    _focusNode.unfocus();
+    if (_focusNode.hasFocus) _focusNode.unfocus();
   }
 
   void _onCustomChanged(String value) {

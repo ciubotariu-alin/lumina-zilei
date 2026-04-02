@@ -16,7 +16,6 @@ class CalendarScreen extends StatefulWidget {
 
 class _CalendarScreenState extends State<CalendarScreen> {
   late DateTime _currentMonth;
-  final DateTime _today = DateTime.now();
 
   static const List<String> _romanianMonths = [
     '',
@@ -31,25 +30,31 @@ class _CalendarScreenState extends State<CalendarScreen> {
   @override
   void initState() {
     super.initState();
-    _currentMonth = DateTime(_today.year, _today.month, 1);
+    final now = DateTime.now();
+    _currentMonth = DateTime(now.year, now.month, 1);
   }
 
   void _previousMonth() {
     setState(() {
-      _currentMonth = DateTime(_currentMonth.year, _currentMonth.month - 1, 1);
+      final m = _currentMonth.month == 1 ? 12 : _currentMonth.month - 1;
+      final y = _currentMonth.month == 1 ? _currentMonth.year - 1 : _currentMonth.year;
+      _currentMonth = DateTime(y, m, 1);
     });
   }
 
   void _nextMonth() {
     setState(() {
-      _currentMonth = DateTime(_currentMonth.year, _currentMonth.month + 1, 1);
+      final m = _currentMonth.month == 12 ? 1 : _currentMonth.month + 1;
+      final y = _currentMonth.month == 12 ? _currentMonth.year + 1 : _currentMonth.year;
+      _currentMonth = DateTime(y, m, 1);
     });
   }
 
   bool _isToday(DateTime date) {
-    return date.year == _today.year &&
-        date.month == _today.month &&
-        date.day == _today.day;
+    final now = DateTime.now();
+    return date.year == now.year &&
+        date.month == now.month &&
+        date.day == now.day;
   }
 
   @override
@@ -215,7 +220,8 @@ class _CalendarScreenState extends State<CalendarScreen> {
 
   void _showDayDetails(
       BuildContext context, DateTime date, CalendarDay? dayInfo) {
-    final dateStr = '${date.day} ${_romanianMonths[date.month]} ${date.year}';
+    final month = date.month >= 1 && date.month <= 12 ? _romanianMonths[date.month] : '';
+    final dateStr = '${date.day} $month ${date.year}';
     final fastingFuture =
         context.read<AppProvider>().getFastingInfo(date);
 
