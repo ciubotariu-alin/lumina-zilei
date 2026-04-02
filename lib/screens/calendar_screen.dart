@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -214,11 +215,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
 
   void _showDayDetails(
       BuildContext context, DateTime date, CalendarDay? dayInfo) {
-    const months = [
-      '', 'Ianuarie', 'Februarie', 'Martie', 'Aprilie', 'Mai', 'Iunie',
-      'Iulie', 'August', 'Septembrie', 'Octombrie', 'Noiembrie', 'Decembrie',
-    ];
-    final dateStr = '${date.day} ${months[date.month]} ${date.year}';
+    final dateStr = '${date.day} ${_romanianMonths[date.month]} ${date.year}';
     final fastingFuture =
         context.read<AppProvider>().getFastingInfo(date);
 
@@ -465,6 +462,10 @@ class _DayDetailSheet extends StatelessWidget {
                 const SizedBox(height: 16),
               ],
 
+              // Post (OCMA-API) — afișat după sfinții zilei
+              _FastingSection(fastingFuture: fastingFuture),
+              const SizedBox(height: 12),
+
               // Apostol
               if (dayInfo != null && dayInfo!.apostol.isNotEmpty) ...[
                 _ReadingCard(
@@ -482,12 +483,8 @@ class _DayDetailSheet extends StatelessWidget {
                   label: 'Evanghelie',
                   text: dayInfo!.evanghelie,
                 ),
-                const SizedBox(height: 12),
+                const SizedBox(height: 8),
               ],
-
-              // Post (OCMA-API) — afișat pentru TOATE zilele
-              _FastingSection(fastingFuture: fastingFuture),
-              const SizedBox(height: 8),
             ],
           ),
         ),
@@ -569,6 +566,10 @@ class _FastingSection extends StatelessWidget {
             ),
           );
         }
+        if (snapshot.hasError) {
+          debugPrint('[FastingSection] Error: ${snapshot.error}');
+          return const SizedBox.shrink();
+        }
         final fasting = snapshot.data;
         if (fasting == null) return const SizedBox.shrink();
 
@@ -576,16 +577,16 @@ class _FastingSection extends StatelessWidget {
         final IconData levelIcon;
 
         if (fasting.isTotalFast) {
-          levelColor = const Color(0xFFB71C1C); // roșu închis
+          levelColor = AppTheme.fastingTotalColor;
           levelIcon = Icons.block;
         } else if (fasting.isStrictFast) {
-          levelColor = const Color(0xFFE53935); // roșu
+          levelColor = AppTheme.fastingStrictColor;
           levelIcon = Icons.remove_circle_outline;
         } else if (fasting.isFasting) {
-          levelColor = AppTheme.goldColor; // auriu
+          levelColor = AppTheme.goldColor;
           levelIcon = Icons.no_food;
         } else {
-          levelColor = const Color(0xFF388E3C); // verde
+          levelColor = AppTheme.fastingFreeColor;
           levelIcon = Icons.check_circle_outline;
         }
 
@@ -606,7 +607,7 @@ class _FastingSection extends StatelessWidget {
                   const SizedBox(width: 8),
                   Expanded(
                     child: Text(
-                      fasting.laymenLevel,
+                      fasting.displayLevel,
                       style: Theme.of(context)
                           .textTheme
                           .titleSmall

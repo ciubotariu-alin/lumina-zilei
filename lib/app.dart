@@ -16,7 +16,7 @@ class OrtodoxApp extends StatelessWidget {
     return MaterialApp(
       title: 'Lumina Zilei',
       debugShowCheckedModeBanner: false,
-      theme: AppTheme.darkTheme,
+      theme: AppTheme.lightTheme,
       home: const MainNavigator(),
     );
   }
@@ -31,6 +31,8 @@ class MainNavigator extends StatefulWidget {
 
 class _MainNavigatorState extends State<MainNavigator> {
   int _selectedIndex = 0;
+  // Screen-urile vizitate — indexul 0 e activ de la start
+  final Set<int> _visitedScreens = {0};
   late final List<Widget> _screens;
 
   @override
@@ -48,6 +50,7 @@ class _MainNavigatorState extends State<MainNavigator> {
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
+      _visitedScreens.add(index);
     });
   }
 
@@ -56,7 +59,10 @@ class _MainNavigatorState extends State<MainNavigator> {
     return Scaffold(
       body: IndexedStack(
         index: _selectedIndex,
-        children: _screens,
+        children: List.generate(_screens.length, (i) {
+          if (!_visitedScreens.contains(i)) return const SizedBox.shrink();
+          return _screens[i];
+        }),
       ),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,

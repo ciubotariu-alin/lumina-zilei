@@ -10,8 +10,12 @@ class AppTheme {
   static const Color deepRedColor = Color(0xFF8B0000); // Deep red
   static const Color accentGoldLight = Color(0xFF996515); // Darker gold for readability
   static const Color dividerColor = Color(0xFFD4C5B0); // Light brown divider
+  static const Color textBrownColor = Color(0xFF4A3728);
+  static const Color fastingTotalColor = Color(0xFF212121);
+  static const Color fastingStrictColor = Color(0xFFE53935);
+  static const Color fastingFreeColor = Color(0xFF388E3C);
 
-  static ThemeData get darkTheme {
+  static ThemeData get lightTheme {
     return ThemeData(
       useMaterial3: true,
       brightness: Brightness.light,

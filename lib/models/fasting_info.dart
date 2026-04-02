@@ -12,9 +12,13 @@ class FastingInfo {
       laymenLevel != 'Dezlegare la toate' &&
       laymenLevel != 'Dezlegare la produse lactate';
 
-  /// Returnează true dacă este post total (negru)
+  /// Returnează true dacă este post total
   bool get isTotalFast => laymenLevel == 'Post total';
 
+  /// Textul afișat în UI (Post total → Post negru)
+  String get displayLevel =>
+      laymenLevel == 'Post total' ? 'Post negru' : laymenLevel;
+
   /// Returnează true dacă este post strict (pâine și apă)
-  bool get isStrictFast => laymenLevel == 'Post aspru';
+  bool get isStrictFast => laymenLevel == 'Post';
 }

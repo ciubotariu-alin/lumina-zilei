@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
@@ -96,8 +97,8 @@ class DataService {
           );
           return jsonString;
         }
-      } catch (_) {
-        // Ignoră eroarea — folosim fallback-ul de mai jos
+      } catch (e, st) {
+        debugPrint('[DataService] Error loading remote calendar: $e\n$st');
       }
     }
 
@@ -147,7 +148,8 @@ class DataService {
       _acatisteCache = list
           .map((a) => Acatist.fromJson(a as Map<String, dynamic>))
           .toList();
-    } catch (_) {
+    } catch (e, st) {
+      debugPrint('[DataService] Error loading acatiste: $e\n$st');
       _acatisteCache = [];
     }
     return _acatisteCache!;
@@ -164,7 +166,8 @@ class DataService {
       _rugaciuniZilniceCache = list
           .map((r) => RugaciuneZilnica.fromJson(r as Map<String, dynamic>))
           .toList();
-    } catch (_) {
+    } catch (e, st) {
+      debugPrint('[DataService] Error loading rugaciuni zilnice: $e\n$st');
       _rugaciuniZilniceCache = [];
     }
     return _rugaciuniZilniceCache!;
@@ -256,7 +259,8 @@ class DataService {
 
       if (season.isEmpty && laymenLevel.isEmpty) return null;
       return FastingInfo(season: season, laymenLevel: laymenLevel);
-    } catch (_) {
+    } catch (e, st) {
+      debugPrint('[DataService] Error getting fasting info: $e\n$st');
       return null;
     }
   }
@@ -279,13 +283,16 @@ class DataService {
           .get(Uri.parse('$_kOcmaBaseUrl/data/new/$year.json'))
           .timeout(const Duration(seconds: 15));
 
-      if (response.statusCode == 200) {
+      if (response.statusCode == 200 &&
+          response.body.trimLeft().startsWith('{')) {
         final data = json.decode(response.body) as Map<String, dynamic>;
         await prefs.setString(cacheKey, response.body);
         _ocmaYearCache[year] = data;
         return data;
       }
-    } catch (_) {}
+    } catch (e, st) {
+      debugPrint('[DataService] Error loading OCMA year data: $e\n$st');
+    }
     return null;
   }
 
@@ -306,12 +313,15 @@ class DataService {
           .get(Uri.parse('$_kOcmaBaseUrl/i18n/ro.json'))
           .timeout(const Duration(seconds: 10));
 
-      if (response.statusCode == 200) {
+      if (response.statusCode == 200 &&
+          response.body.trimLeft().startsWith('{')) {
         _ocmaI18nRo = json.decode(response.body) as Map<String, dynamic>;
         await prefs.setString(cacheKey, response.body);
         return _ocmaI18nRo;
       }
-    } catch (_) {}
+    } catch (e, st) {
+      debugPrint('[DataService] Error loading OCMA i18n data: $e\n$st');
+    }
     return null;
   }
 }

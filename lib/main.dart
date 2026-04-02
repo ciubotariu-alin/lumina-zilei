@@ -17,9 +17,13 @@ void main() async {
   await notificationService.initialize();
   await notificationService.requestPermissions();
 
+  // Initialize provider before runApp to avoid race condition with null data
+  final appProvider = AppProvider();
+  await appProvider.init();
+
   runApp(
-    ChangeNotifierProvider(
-      create: (_) => AppProvider()..init(),
+    ChangeNotifierProvider<AppProvider>.value(
+      value: appProvider,
       child: const OrtodoxApp(),
     ),
   );

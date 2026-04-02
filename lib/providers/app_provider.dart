@@ -106,9 +106,10 @@ class AppProvider extends ChangeNotifier {
   }
 
   List<String> getTodaySaintsNames() {
-    if (_todayInfo == null) return [];
-    if (_todayInfo!.sarbatoare.isNotEmpty) return [_todayInfo!.sarbatoare];
-    return _todayInfo!.sfinti;
+    final info = _todayInfo;
+    if (info == null) return [];
+    if (info.sarbatoare.isNotEmpty) return [info.sarbatoare];
+    return info.sfinti;
   }
 
   /// Returneaz\u0103 informa\u021biile de post pentru data dat\u0103 din OCMA-API.

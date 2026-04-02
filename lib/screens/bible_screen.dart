@@ -17,39 +17,61 @@ class _BibleScreenState extends State<BibleScreen> {
   String _searchQuery = '';
   String? _selectedBook;
 
+  // Cache-uri pentru calcule scumpe
+  List<BibleQuote> _cachedQuotes = [];
+  List<String> _allBooks = [];
+  List<String> _filteredBooks = [];
+  final Map<String, List<BibleQuote>> _bookQuotesCache = {};
+
   @override
   void dispose() {
     _searchController.dispose();
+    _bookQuotesCache.clear();
+    _allBooks = [];
+    _filteredBooks = [];
+    _cachedQuotes = [];
     super.dispose();
   }
 
-  /// Get unique book names from quotes
-  List<String> _getBooks(List<BibleQuote> quotes) {
+  /// Recalculează cache-ul cărților când se schimbă lista de quotes
+  void _rebuildBooksCache(List<BibleQuote> quotes) {
+    if (quotes.length == _cachedQuotes.length &&
+        (quotes.isEmpty || quotes.first == _cachedQuotes.first)) return;
+    _cachedQuotes = quotes;
+    _bookQuotesCache.clear();
+
+    final seen = <String>{};
     final books = <String>[];
     for (final q in quotes) {
-      if (!books.contains(q.carte)) {
-        books.add(q.carte);
-      }
+      if (seen.add(q.carte)) books.add(q.carte);
     }
-    return books;
+    _allBooks = books;
+    _rebuildFilteredBooks();
   }
 
-  /// Filter books by search query
-  List<String> _filterBooks(List<String> books) {
-    if (_searchQuery.isEmpty) return books;
-    final query = _searchQuery.toLowerCase();
-    return books.where((b) => b.toLowerCase().contains(query)).toList();
+  /// Recalculează lista filtrată când se schimbă searchQuery
+  void _rebuildFilteredBooks() {
+    if (_searchQuery.isEmpty) {
+      _filteredBooks = _allBooks;
+    } else {
+      final query = _searchQuery.toLowerCase();
+      _filteredBooks =
+          _allBooks.where((b) => b.toLowerCase().contains(query)).toList();
+    }
   }
 
-  /// Get quotes for a specific book, sorted by chapter and verse
-  List<BibleQuote> _getBookQuotes(List<BibleQuote> quotes, String book) {
-    final bookQuotes = quotes.where((q) => q.carte == book).toList();
-    bookQuotes.sort((a, b) {
-      final c = a.capitol.compareTo(b.capitol);
-      if (c != 0) return c;
-      return a.verset.compareTo(b.verset);
+  /// Returnează quotes pentru o carte din cache (lazy)
+  List<BibleQuote> _getBookQuotesCached(String book) {
+    return _bookQuotesCache.putIfAbsent(book, () {
+      final bookQuotes =
+          _cachedQuotes.where((q) => q.carte == book).toList();
+      bookQuotes.sort((a, b) {
+        final c = a.capitol.compareTo(b.capitol);
+        if (c != 0) return c;
+        return a.verset.compareTo(b.verset);
+      });
+      return bookQuotes;
     });
-    return bookQuotes;
   }
 
   /// Get unique chapters for a book
@@ -94,20 +116,20 @@ class _BibleScreenState extends State<BibleScreen> {
             );
           }
 
+          // Recalculează cache-ul doar dacă quotes s-a schimbat
+          _rebuildBooksCache(quotes);
+
           if (_selectedBook != null) {
-            return _buildBookView(quotes, _selectedBook!);
+            return _buildBookView(_selectedBook!);
           }
 
-          return _buildBookList(quotes);
+          return _buildBookList();
         },
       ),
     );
   }
 
-  Widget _buildBookList(List<BibleQuote> quotes) {
-    final allBooks = _getBooks(quotes);
-    final filteredBooks = _filterBooks(allBooks);
-
+  Widget _buildBookList() {
     return Column(
       children: [
         // Search bar
@@ -115,7 +137,12 @@ class _BibleScreenState extends State<BibleScreen> {
           padding: const EdgeInsets.all(16),
           child: TextField(
             controller: _searchController,
-            onChanged: (value) => setState(() => _searchQuery = value),
+            onChanged: (value) {
+              setState(() {
+                _searchQuery = value;
+                _rebuildFilteredBooks();
+              });
+            },
             decoration: InputDecoration(
               hintText: 'Caută o carte (ex: Marcu, Psalmi...)',
               hintStyle: TextStyle(color: AppTheme.creamColor.withOpacity(0.4)),
@@ -125,7 +152,10 @@ class _BibleScreenState extends State<BibleScreen> {
                       icon: const Icon(Icons.clear, color: AppTheme.goldColor),
                       onPressed: () {
                         _searchController.clear();
-                        setState(() => _searchQuery = '');
+                        setState(() {
+                          _searchQuery = '';
+                          _rebuildFilteredBooks();
+                        });
                       },
                     )
                   : null,
@@ -150,7 +180,7 @@ class _BibleScreenState extends State<BibleScreen> {
 
         // Book list
         Expanded(
-          child: filteredBooks.isEmpty
+          child: _filteredBooks.isEmpty
               ? Center(
                   child: Text(
                     'Nicio carte găsită pentru "$_searchQuery"',
@@ -159,10 +189,10 @@ class _BibleScreenState extends State<BibleScreen> {
                 )
               : ListView.builder(
                   padding: const EdgeInsets.symmetric(horizontal: 16),
-                  itemCount: filteredBooks.length,
+                  itemCount: _filteredBooks.length,
                   itemBuilder: (context, index) {
-                    final book = filteredBooks[index];
-                    final bookQuotes = _getBookQuotes(quotes, book);
+                    final book = _filteredBooks[index];
+                    final bookQuotes = _getBookQuotesCached(book);
                     final chapters = _getChapters(bookQuotes);
                     final verseCount = bookQuotes.length;
 
@@ -226,8 +256,8 @@ class _BibleScreenState extends State<BibleScreen> {
     );
   }
 
-  Widget _buildBookView(List<BibleQuote> quotes, String book) {
-    final bookQuotes = _getBookQuotes(quotes, book);
+  Widget _buildBookView(String book) {
+    final bookQuotes = _getBookQuotesCached(book);
     final chapters = _getChapters(bookQuotes);
 
     return ListView.builder(

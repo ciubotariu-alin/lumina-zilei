@@ -38,7 +38,8 @@ class PrayerCategory {
       nume: json['nume'] as String? ?? '',
       icon: json['icon'] as String? ?? 'star',
       rugaciuni: rugaciuniList
-          .map((r) => Prayer.fromJson(r as Map<String, dynamic>))
+          .whereType<Map<String, dynamic>>()
+          .map((r) => Prayer.fromJson(r))
           .toList(),
     );
   }

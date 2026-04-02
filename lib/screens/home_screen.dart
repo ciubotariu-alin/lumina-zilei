@@ -10,9 +10,11 @@ class HomeScreen extends StatelessWidget {
 
   const HomeScreen({super.key, required this.onNavigate});
 
+  static final _sentenceEndRegex = RegExp(r'[.!?]');
+
   String _firstSentence(String text) {
     final trimmed = text.trim();
-    final match = RegExp(r'[.!?]').firstMatch(trimmed);
+    final match = _sentenceEndRegex.firstMatch(trimmed);
     if (match == null) return trimmed.length > 200 ? '${trimmed.substring(0, 200)}…' : trimmed;
     return trimmed.substring(0, match.end);
   }
@@ -73,10 +75,10 @@ class HomeScreen extends StatelessWidget {
                         vertical: 20, horizontal: 16),
                     child: Column(
                       children: [
-                        const Icon(
-                          Icons.add,
-                          size: 48,
-                          color: AppTheme.goldColor,
+                        Image.asset(
+                          'assets/pictures/Cross.png',
+                          width: 64,
+                          height: 64,
                         ),
                         const SizedBox(height: 4),
                         Text(
@@ -203,8 +205,7 @@ class HomeScreen extends StatelessWidget {
                                                     .textTheme
                                                     .bodyMedium
                                                     ?.copyWith(
-                                                      color: const Color(
-                                                          0xFF4A3728),
+                                                      color: AppTheme.textBrownColor,
                                                     ),
                                               ),
                                             ),
@@ -220,7 +221,7 @@ class HomeScreen extends StatelessWidget {
                                             .textTheme
                                             .bodyMedium
                                             ?.copyWith(
-                                              color: const Color(0xFF4A3728),
+                                              color: AppTheme.textBrownColor,
                                             ),
                                       ),
                                   ],
@@ -231,7 +232,7 @@ class HomeScreen extends StatelessWidget {
                                       .textTheme
                                       .bodyMedium
                                       ?.copyWith(
-                                        color: const Color(0xFF4A3728),
+                                        color: AppTheme.textBrownColor,
                                       ),
                                 ),
                         ),
@@ -302,7 +303,7 @@ class HomeScreen extends StatelessWidget {
                                       .textTheme
                                       .bodyMedium
                                       ?.copyWith(
-                                        color: const Color(0xFF4A3728),
+                                        color: AppTheme.textBrownColor,
                                         height: 1.6,
                                       ),
                                 ),
@@ -394,7 +395,7 @@ class HomeScreen extends StatelessWidget {
                                       .textTheme
                                       .bodyMedium
                                       ?.copyWith(
-                                        color: const Color(0xFF4A3728),
+                                        color: AppTheme.textBrownColor,
                                         fontStyle: FontStyle.italic,
                                         height: 1.6,
                                       ),
@@ -454,7 +455,7 @@ class HomeScreen extends StatelessWidget {
                                 icon: Icons.menu_book,
                                 label: 'Rugăciuni',
                                 subtitle: 'Rugăciunile zilei',
-                                onTap: () => onNavigate(2),
+                                onTap: () => onNavigate(2), // Rugăciuni
                               ),
                             ),
                             const SizedBox(width: 12),
@@ -463,7 +464,7 @@ class HomeScreen extends StatelessWidget {
                                 icon: Icons.calendar_month,
                                 label: 'Calendar',
                                 subtitle: 'Sfinții lunii',
-                                onTap: () => onNavigate(1),
+                                onTap: () => onNavigate(1), // Calendar
                               ),
                             ),
                           ],

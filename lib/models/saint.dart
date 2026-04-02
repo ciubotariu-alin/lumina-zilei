@@ -1,3 +1,5 @@
+import 'package:flutter/foundation.dart';
+
 class Saint {
   final String name;
 
@@ -28,7 +30,13 @@ class CalendarDay {
     return CalendarDay(
       date: date,
       sarbatoare: json['sarbatoare'] as String? ?? '',
-      sfinti: List<String>.from(json['sfinti'] as List? ?? []),
+      sfinti: (json['sfinti'] as List? ?? []).where((item) {
+        if (item is! String) {
+          debugPrint('[CalendarDay] Non-string in sfinti: $item');
+          return false;
+        }
+        return true;
+      }).cast<String>().toList(),
       apostol: (json['apostolul'] ?? json['apostol']) as String? ?? '',
       evanghelie: (json['evanghelia'] ?? json['evanghelie']) as String? ?? '',
     );
