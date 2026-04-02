@@ -1,0 +1,164 @@
+{
+  "categorii": [
+    {
+      "id": "dimineata",
+      "nume": "Rugăciunile dimineții",
+      "icon": "wb_sunny",
+      "rugaciuni": [
+        {
+          "id": "dimineata_1",
+          "titlu": "Rugăciunea de dimineață",
+          "text": "Sculându-mă din somn, îți aduc Ție, Mântuitorule, cântare de dimineață și căzând înaintea bunătății Tale, strig către Tine: Nu mă lăsa să adorm în păcatul morții, ci mă miluiește pe mine, Cel Ce ai patimă de bunăvoie și mă ridică pe mine, cel ce zac în lene, și mă mântuiește.\n\nÎnchinăciune cu fruntea la pământ.\n\nScuturând somnul, Preacurată Fecioară, apropiindu-mă, eu nevrednicul, din buzele mele aduc laudă dimineții și îndrăznesc a striga către bunătatea ta: nu mă trece cu vederea pe mine, Maica lui Dumnezeu, ci mă mântuiește pe mine, Cel ce ai dragoste de mamă și te milostivești spre cei care păcătuiesc.\n\nDoamne Dumnezeul meu, mulțumescu-Ți că m-ai învrednicit și în noaptea aceasta de odihna cea de noapte. Dă-mi, Doamne, mintea și inima mea a se pleca spre Tine, luminează-mi ochii sufletului meu ca să nu adorm întru moarte. Luminează, Doamne, gândul meu ca să pricep poruncile Tale; trezește-mă ca, în ceasul celor de pe urmă, priveghindu-le, să fiu gata a ieși înaintea Ta. Iar în toate zilele, luminează mintea mea cu lumina cunoștinței Tale, aprinde inima mea cu focul dragostei Tale, ca în toate zilele vieții mele, prin fapte și prin cuvânt, să propovăduiesc slava Ta, a Celui ce ești binecuvântat în veci. Amin."
+        },
+        {
+          "id": "dimineata_psalmul50",
+          "titlu": "Psalmul 50",
+          "text": "Miluiește-mă, Dumnezeule, după mare mila Ta și după mulțimea îndurărilor Tale șterge fărădelegea mea.\n\nMai vârtos mă spală de fărădelegea mea și de păcatul meu mă curățește.\n\nCă fărădelegea mea eu o cunosc și păcatul meu înaintea mea este pururea.\n\nȚie unuia am greșit și rău înaintea Ta am făcut, așa încât drept ești Tu întru cuvintele Tale și biruitor când vei judeca Tu.\n\nCă iată întru fărădelegi m-am zămislit și în păcate m-a născut maica mea.\n\nCă iată adevărul ai iubit; cele nearătate și cele ascunse ale înțelepciunii Tale mi-ai arătat mie.\n\nStropi-mă-vei cu isop și mă voi curăți; spăla-mă-vei și mai mult decât zăpada mă voi albi.\n\nAuzului meu vei da bucurie și veselie; bucura-se-vor oasele mele cele smerite.\n\nÎntoarce fața Ta de la păcatele mele și toate fărădelegile mele șterge-le.\n\nInimă curată zidește întru mine, Dumnezeule și duh drept înnoiește întru cele dinlăuntru ale mele.\n\nNu mă lepăda de la fața Ta și Duhul Tău cel Sfânt nu-l lua de la mine.\n\nDă-mi mie bucuria mântuirii Tale și cu duh stăpânitor mă întărește.\n\nÎnvăța-voi pe cei fără de lege căile Tale și cei necredincioși la Tine se vor întoarce.\n\nIzăbăvește-mă de vărsarea de sânge, Dumnezeule, Dumnezeul mântuirii mele; bucura-se-va limba mea de dreptatea Ta.\n\nDoamne, buzele mele vei deschide și gura mea va vesti lauda Ta.\n\nCă de ai fi voit jertfă, ți-aș fi dat; arderile de tot nu le vei binevoi.\n\nJertfa lui Dumnezeu: duhul umilit; inima înfrântă și smerită Dumnezeu nu o va urgisi.\n\nFă bine, Doamne, întru bunăvoirea Ta, Sionului, și să se zidească zidurile Ierusalimului.\n\nAtunci vei binevoi jertfa dreptății, prinosul și arderile de tot; atunci vor pune pe altarul Tău viței."
+        },
+        {
+          "id": "dimineata_vasile",
+          "titlu": "Rugăciunea Sfântului Vasile cel Mare",
+          "text": "Doamne, Doamne, Care ne-ai izbăvit pe noi din toată săgeata ce zboară ziua, izbăvește-ne pe noi și de tot lucrul ce umblă întru întuneric. Primește mâinile noastre ridicate spre Tine, ca o jertfă de seară, și ne învredniciți a trece noaptea aceasta fără prihană, nevătămați de meșteșugirile Celui Viclean. Și ne dă nouă, nevrednicilor, să adormim, înconjurați de paza Ta. Îndreptează rugăciunea noastră ca o tămâie înaintea Ta și să nu plece inima noastră spre cuvinte sau gânduri rele. Ci ne miluiește pe noi, pentru că mari sunt milele Tale și nu vom mai face rău. Amin."
+        },
+        {
+          "id": "dimineata_mc",
+          "titlu": "Rugăciunea Marelui Canon",
+          "text": "Unde voi mai merge eu, ticălosul, cu nemernicia mea? La cine voi mai alerga? Unde mă voi ascunde de fețele dreptei judecăți? Nu am lucruri bune cu mine, îmi este rușine să privesc la înălțimea cerului, căci L-am mâniat pe Hristos Dumnezeul meu.\n\nTe rog pe Tine, Mântuitorule, luminează cugetul meu întru cunoașterea adevărului, ca un iubitor de oameni, și din adâncul Tău cel nemărginit scoate-mă pe mine cel ce am căzut departe de orice virtute.\n\nDoamne, iartă-mă, Doamne, primește-mă, Doamne, mântuiește-mă pe mine, robul Tău, și nu-mi aduce aminte de greșelile mele, ci în mila Ta cea bogată, mă acoperă pe mine cel ce greșesc totdeauna. Amin."
+        },
+        {
+          "id": "imne_dimineata",
+          "titlu": "Imnul dimineții",
+          "text": "Slavă întru cei de sus lui Dumnezeu și pe pământ pace, între oameni bunăvoire.\n\nLăudămu-Te, binecuvântămu-Te, închinămu-ne Ție, slăvimu-Te, mulțumim Ție pentru mare slava Ta.\n\nDoamne, Împărate ceresc, Dumnezeule, Tată Atotțiitorule, Doamne, Fiule, Unule-Născut, Iisuse Hristoase și Spirite Sfinte.\n\nDoamne Dumnezeule, Mieluşelul lui Dumnezeu, Fiul Tatălui, Cel ce ridici păcatul lumii, miluiește-ne pe noi; Cel ce ridici păcatele lumii, primește rugăciunea noastră; Cel ce ești de-a dreapta Tatălui, miluiește-ne pe noi.\n\nCă Tu ești Sfânt, Tu ești Domn, Tu ești Unul Preaînalt, Iisuse Hristoase, întru slava lui Dumnezeu Tatăl. Amin.\n\nÎn toate zilele Te voi binecuvânta și voi lăuda numele Tău în veac și în veacul veacului.\n\nÎnvredniciți-ne, Doamne, în ziua aceasta fără de păcat să ne păzim. Binecuvântat ești, Doamne, Dumnezeul părinților noștri, și lăudat și preamărit este numele Tău în veci. Amin."
+        }
+      ]
+    },
+    {
+      "id": "seara",
+      "nume": "Rugăciunile serii",
+      "icon": "nightlight_round",
+      "rugaciuni": [
+        {
+          "id": "seara_1",
+          "titlu": "Rugăciunea de seară",
+          "text": "Doamne Dumnezeul nostru, de câte greșeli m-am întinat în ziua aceasta, cu cuvântul, cu lucrul sau cu gândul, ca un bun și iubitor de oameni, iartă-mă. Dă-mi somn liniștit și fără de griji și ferește-mă de orice lucrare a diavolului. Scoală-mă la ceasul potrivit ca să preamăresc bunătatea Ta. Că Tu ești preamărit cu Cel fără de început al Tău Tată și cu Preasfântul Tău Duh, acum și pururea și în vecii vecilor. Amin.\n\nCuvine-se cu adevărat să Te fericim pe Tine, Născătoare de Dumnezeu, cea pururea fericită și prea nevinovată și Maica Dumnezeului nostru. Cea mai cinstită decât Heruvimii și mai mărită fără de asemănare decât Serafimii, care fără stricăciune pe Dumnezeu Cuvântul ai născut, pe tine cea cu adevărat Născătoare de Dumnezeu, te mărim.\n\nÎn mâinile Tale, Doamne Dumnezeule al Adevărului, îmi dau duhul meu; răscumpără-mă, Doamne Dumnezeule al Adevărului. Binecuvântat ești, Doamne, că m-ai învățat îndreptările Tale. Binecuvântat ești, Doamne, luminează-mă cu îndreptările Tale. Binecuvântat ești, Sfinte, luminează-mă cu îndreptările Tale. Mila Ta, Doamne, este în veac; lucrările mâinilor Tale nu le trece cu vederea. Ție Ți se cuvine laudă, Ție Ți se cuvine cântare, Ție slavă Ți se cuvine: Tatălui și Fiului și Sfântului Duh, acum și pururea și în vecii vecilor. Amin."
+        },
+        {
+          "id": "seara_psalmul90",
+          "titlu": "Psalmul 90",
+          "text": "Cel ce locuiește în ajutorul Celui Preaînalt, întru acoperământul Dumnezeului cerului se va sălășlui.\n\nVa zice Domnului: Sprijinitorul meu ești și scăparea mea, Dumnezeul meu, voi nădăjdui spre El.\n\nCă El te va izbăvi din cursa vânătorilor și de cuvântul tulburător.\n\nCu spatele Său te va umbri pe tine și sub aripile Lui vei nădăjdui; ca o armă te va înconjura adevărul Lui.\n\nNu te vei teme de frica de noapte, de săgeata ce zboară ziua,\n\nDe lucrul ce umblă în întuneric, de molima și de demonul amiezii.\n\nCădea-vor dinspre latura ta o mie și zece mii de-a dreapta ta; dar de tine nu se vor apropia.\n\nCi numai cu ochii tăi vei privi și răsplătirea păcătoșilor vei vedea.\n\nCă Tu, Doamne, ești nădejdea mea; Cel Preaînalt ți-ai pus locaș al tău.\n\nNu va veni spre tine răul și bătaia nu se va apropia de locașul tău.\n\nCă îngerilor Săi va porunci pentru tine, ca să te păzească în toate căile tale.\n\nPe mâini te vor ridica, ca nu cumva să împiedici de piatră piciorul tău.\n\nPeste aspidă și vasilisc vei păși și vei călca peste leu și peste balaur.\n\nCă spre Mine a nădăjduit și Eu îl voi izbăvi pe el; acoperi-l-voi pe el, că a cunoscut numele Meu.\n\nStriga-va către Mine și Eu îl voi auzi pe el; cu el sunt în necaz, scăpa-l-voi pe el și îl voi mări.\n\nCu lungime de zile îl voi umple pe el și îi voi arăta lui mântuirea Mea."
+        },
+        {
+          "id": "seara_maica",
+          "titlu": "Rugăciunea către Maica Domnului (seara)",
+          "text": "Preasfântă Stăpână, Născătoare de Dumnezeu, lumina sufletului meu întunecat, nădejdea mea, acoperământul meu, scăparea mea, mângâierea mea, bucuria mea!\n\nTu, împreună cu Fiul tău și Dumnezeul meu stai; Tu, împreună cu îngerii slujești; Tu, Regină a cerului și a pământului și al iadului; Tu ajuți pe cei ce vin la Tine cu credință și nădejde.\n\nPrimește, Preasfântă Fecioară Maica lui Dumnezeu, această rugăciune a mea, a păcătosului și o du Fiului Tău și Dumnezeului nostru, ca prin Tine, Preacurată, să se mântuiască și să se lumineze sufletul meu cel întunecat.\n\nStăpână, nu mă lăsa în necazuri, nu mă trece cu vederea în nevoi, ci mă ajută și mă acoperă cu acoperământul Tău cel Sfânt.\n\nCa să nu mă atingă cursa celui viclean, ci cu rugăciunile tale, Maică Preacurată, doresc să fiu izbăvit de toată răutatea și îndreptez sufletul meu la pocăință. Amin."
+        },
+        {
+          "id": "seara_ingerului",
+          "titlu": "Rugăciune către Îngerul Păzitor",
+          "text": "Îngerule al lui Dumnezeu, Sfântul meu Păzitor, cel dat mie din sfântul Botez spre paza sufletului și a trupului meu, rog pe tine, eu păcătosul și nevrednicul:\n\nIluminează-mă astăzi și mă ferește de tot răul, îndreptează-mă spre calea cea bună și povățuiește-mă spre fapte de pocăință, ca să fiu plăcut lui Dumnezeu, Stăpânului și Ziditorului tuturor.\n\nApără-mă în noaptea aceasta de toată lucrarea diavolului și de bântuiala lui; de tot răul și de tot necazul.\n\nSf. Înger al lui Dumnezeu, sfântul meu Păzitor, acopere-mă cu aripile tale luminoase și nu mă lăsa să fiu batjocorit de duhurile viclene. Amin."
+        }
+      ]
+    },
+    {
+      "id": "de_baza",
+      "nume": "Rugăciuni de bază",
+      "icon": "star",
+      "rugaciuni": [
+        {
+          "id": "tatal_nostru",
+          "titlu": "Tatăl Nostru",
+          "text": "Tatăl nostru, Care ești în ceruri, sfințească-Se numele Tău, vie împărăția Ta, fie voia Ta, precum în cer așa și pe pământ. Pâinea noastră cea de toate zilele dă-ne-o nouă astăzi. Și ne iartă nouă greșelile noastre, precum și noi iertăm greșiților noștri. Și nu ne duce pe noi în ispită, ci ne mântuiește de cel viclean. Că a Ta este împărăția și puterea și mărirea, a Tatălui și a Fiului și a Sfântului Duh, acum și pururea și în vecii vecilor. Amin."
+        },
+        {
+          "id": "crezul",
+          "titlu": "Crezul",
+          "text": "Cred întru unul Dumnezeu, Tatăl Atotțiitorul, Făcătorul cerului și al pământului, al tuturor celor văzute și nevăzute. Și întru unul Domn Iisus Hristos, Fiul lui Dumnezeu, Unul Născut, Care din Tatăl S-a născut mai înainte de toți vecii: Lumină din Lumină, Dumnezeu adevărat din Dumnezeu adevărat, născut nu făcut, Cel de o ființă cu Tatăl, prin Care toate s-au făcut. Care pentru noi oamenii și pentru a noastră mântuire S-a pogorât din ceruri și S-a întrupat de la Duhul Sfânt și din Maria Fecioara și S-a făcut om. Și S-a răstignit pentru noi în zilele lui Ponțiu Pilat și a pătimit și S-a îngropat. Și a înviat a treia zi după Scripturi. Și S-a suit la ceruri și șade de-a dreapta Tatălui. Și iarăși va să vină cu slavă să judece viii și morții, a Cărui împărăție nu va avea sfârșit. Și întru Duhul Sfânt, Domnul de viață Făcătorul, Care din Tatăl purcede, Cel ce împreună cu Tatăl și cu Fiul este închinat și slăvit, Care a grăit prin proroci. Întru una, sfântă, sobornicească și apostolească Biserică. Mărturisesc un Botez spre iertarea păcatelor. Aștept învierea morților și viața veacului ce va să fie. Amin."
+        },
+        {
+          "id": "imparate_ceresc",
+          "titlu": "Împărate Ceresc",
+          "text": "Împărate Ceresc, Mângâietorule, Duhul Adevărului, Care pretutindeni ești și toate le plinești, Vistierul bunătăților și Dătătorule de viață, vino și Te sălășluiește întru noi și ne curățește pe noi de toată întinăciunea și mântuiește, Bunule, sufletele noastre."
+        },
+        {
+          "id": "sfinte_dumnezeule",
+          "titlu": "Sfinte Dumnezeule",
+          "text": "Sfinte Dumnezeule, Sfinte tare, Sfinte fără de moarte, miluiește-ne pe noi.\nSfinte Dumnezeule, Sfinte tare, Sfinte fără de moarte, miluiește-ne pe noi.\nSfinte Dumnezeule, Sfinte tare, Sfinte fără de moarte, miluiește-ne pe noi.\n\nSlavă Tatălui și Fiului și Sfântului Duh, și acum și pururea și în vecii vecilor. Amin."
+        },
+        {
+          "id": "preasfanta_treime",
+          "titlu": "Rugăciunea Preasfintei Treimi",
+          "text": "Preasfântă Treime, miluiește-ne pe noi. Doamne, curățește păcatele noastre. Stăpâne, iartă fărădelegile noastre. Sfinte, cercetează și vindecă neputințele noastre, pentru numele Tău."
+        },
+        {
+          "id": "doamne_miluieste",
+          "titlu": "Doamne Miluiește",
+          "text": "Doamne miluiește. Doamne miluiește. Doamne miluiește.\n\nSlavă Tatălui și Fiului și Sfântului Duh, și acum și pururea și în vecii vecilor. Amin.\n\nVeniți să ne închinăm și să cădem la Hristos. Miluiește-ne pe noi Doamne, miluiește-ne pe noi, că nepricepând noi niciun răspuns să dăm, această rugăciune aducem Ție, ca unui Stăpân: Miluiește-ne pe noi."
+        },
+        {
+          "id": "nascatoare_dumnezeu",
+          "titlu": "Rugăciunea Născătoarei de Dumnezeu",
+          "text": "Născătoare de Dumnezeu Fecioară, bucură-te, ceea ce ești plină de dar, Marie; Domnul este cu tine. Binecuvântată ești tu între femei și binecuvântat este rodul pântecelui tău, că ai născut pe Mântuitorul sufletelor noastre."
+        },
+        {
+          "id": "cuvine_se",
+          "titlu": "Cuvine-se cu adevărat",
+          "text": "Cuvine-se cu adevărat să Te fericim pe Tine, Născătoare de Dumnezeu, cea pururea fericită și prea nevinovată și Maica Dumnezeului nostru.\n\nCea mai cinstită decât Heruvimii și mai mărită fără de asemănare decât Serafimii, care fără stricăciune pe Dumnezeu Cuvântul ai născut, pe tine cea cu adevărat Născătoare de Dumnezeu, te mărim."
+        },
+        {
+          "id": "rugaciunea_inimii",
+          "titlu": "Rugăciunea Inimii (Rugăciunea lui Iisus)",
+          "text": "Doamne Iisuse Hristoase, Fiul lui Dumnezeu, miluiește-mă pe mine păcătosul.\n\nAceastă scurtă rugăciune, numită și Rugăciunea lui Iisus sau Rugăciunea inimii, este una din cele mai vechi și mai profunde rugăciuni ale tradiției ortodoxe.\n\nEa se poate repeta continuu, în orice moment al zilei, concentrând mintea și inima spre Dumnezeu. Sfinții Părinți o numesc rugăciunea neîncetată despre care vorbește Sfântul Apostol Pavel: «Rugați-vă neîncetat» (1 Tesaloniceni 5:17)."
+        }
+      ]
+    },
+    {
+      "id": "acatiste",
+      "nume": "Acatiste",
+      "icon": "menu_book",
+      "rugaciuni": [
+        {
+          "id": "acatist_mantuitor",
+          "titlu": "Acatistul Mântuitorului (prescurtat)",
+          "text": "Condac 1\nApărătorului Domn și Dumnezeu, Care biruiești moartea cu moartea și lumii dăruiești viața, cu mulțumire Îți aducem cântare de laudă, noi, robii Tăi și binecredincioșii, zicând: Iisuse, Fiul lui Dumnezeu, miluiește-ne pe noi.\n\nIcos 1\nÎngerul cel mai mare, Hristoase, Se arată Maicii Tale mai întâi și Îți vestește nașterea Ta, zicând: Bucură-te, Doamne, Care dai bucurie lumii; Bucură-te, Cela Ce ești Mântuitorul vieții omului; Bucură-te, Cela ce ne izbăvești pe noi de vrăjmașul; Bucură-te, Fiul Cel veșnic al Tatălui; Iisuse, Fiul lui Dumnezeu, miluiește-ne pe noi.\n\nCondac 2\nVăzând nașterea Ta cea preasfântă, magii au adus Ție daruri, conducând cântare: Aliluia!\n\nIcos 2\nÎnțelepciunea Ta, Doamne, cea dumnezeiască și tainică ne-a descoperi planul mântuirii noastre: Bucură-te, Cela ce ești Unul Dumnezeu din Dumnezeul nostru; Bucură-te, Izbăvitor și Mântuitor al tuturor; Bucură-te, Cel Ce prin cruce biruiești moartea; Bucură-te, Învierea și Viața noastră; Iisuse, Fiul lui Dumnezeu, miluiește-ne pe noi.\n\nCondac 3\nCu puterea Duhului Sfânt ai umplut sufletele drepților celor ce strigau Ție: Aliluia!\n\nIcos 3\nAvând milă nemăsurată față de neamul omenesc, Doamne, spre noi ai venit în trup, ca un Dumnezeu cu adevărat iubitor de oameni: Bucură-te, Lumina cea adevărată care luminezi toată lumea; Bucură-te, Cela Ce ești Calea, Adevărul și Viața; Bucură-te, Vindecătorul sufletelor și al trupurilor noastre; Bucură-te, Nădejdea noastră cea veșnică; Iisuse, Fiul lui Dumnezeu, miluiește-ne pe noi.\n\nCondac 4\nÎnchinămu-ne Ție, Dumnezeul nostru, și cu credință strigăm: Aliluia!\n\nIcos 4\nAuzind cei din veac și văzând plinirea tainei mântuirii, cu evlavie strigă Ție: Bucură-te, Cel Ce ne-ai răscumpărat de sub blestemul legii; Bucură-te, Pâinea vieții cea adevărată; Bucură-te, Cel Ce saturi sufletele noastre; Bucură-te, Lumina cea neapusă; Iisuse, Fiul lui Dumnezeu, miluiește-ne pe noi.\n\nCondac 5\nDoamne Iisuse Hristoase, Fiul lui Dumnezeu, căzând înaintea bunătății Tale strigăm: Aliluia!"
+        },
+        {
+          "id": "acatist_maica",
+          "titlu": "Acatistul Maicii Domnului (prescurtat)",
+          "text": "Condac 1\nApărătoarei Doamne, biruindu-se de rele robii Tăi, cu mulțumire scriem Ție, Năcătoare de Dumnezeu, cântări de biruință. Ci ca ceea ce ai stăpânire nebiruită, izbăvește-ne din toate nevoile, ca să strigăm Ție: Bucură-te, Mireasă, pururea Fecioară.\n\nIcos 1\nÎngerul cel mai mare a fost trimis din cer să zică Născătoarei de Dumnezeu: Bucură-te! Și, văzând el, Doamne, trupul Tău la glasul cel netrupesc, a stat uimit și a strigat ei unele ca acestea:\n\nBucură-te, prin care bucuria va străluci;\nBucură-te, prin care blestemul va pieri;\nBucură-te, chemarea lui Adam cel căzut;\nBucură-te, izbăvirea lacrimilor Evei;\nBucură-te, înălțime ce nu se poate urca de gânduri omenești;\nBucură-te, adânc ce nu se poate vedea nici cu ochii îngerești;\nBucură-te, că ești scaunul Împăratului;\nBucură-te, că porți pe Cel ce poartă toate;\nBucură-te, Stea care arăți Soarele;\nBucură-te, pântece al Dumnezeieștii Întrupări;\nBucură-te, prin care se înoiește zidirea;\nBucură-te, prin care Ziditorul Se face prunc;\nBucură-te, Mireasă, pururea Fecioară.\n\nCondac 2\nVăzând dreptul Simeon că Dumnezeu-Cuvântul a venit în lume, L-a primit în brațe și a strigat Lui: Aliluia!\n\nIcos 2\nNoua cunoaștere a adus Fecioara, că a văzut-o pe ea Elisabeta; căci, umplându-se de Duhul Sfânt, a strigat cu glas mare: Binecuvântată ești tu între femei!\nBucură-te, cea prin care s-a bucurat cel purtat în pântece;\nBucură-te, cea prin care s-a bucurat cel mai mult de toate;\nBucură-te, mlădiță a vestirii celei neveștejite;\nBucură-te, câmpul rodului celui sfânt;\nBucură-te, cea care ai odrăslit Floarea cea de nestricăciune;\nBucură-te, cea care ai răsărit Lumina nepieritoare;\nBucură-te, Mireasă, pururea Fecioară."
+        },
+        {
+          "id": "acatist_sf_nicolae",
+          "titlu": "Acatistul Sf. Nicolae (prescurtat)",
+          "text": "Condac 1\nApărătorule și rugătorule pentru noi, Sfinte Ierarhe Nicolae, primind de la Dumnezeu dar de a face minuni, izbăvind pe toți cei ce vin la tine cu credință, ajută-ne și nouă, celor ce prăznuim cu dragoste sfântă pomenirea ta și strigăm: Bucură-te, Sfinte Ierarhe Nicolae, mare Făcătorule de minuni!\n\nIcos 1\nÎnger cu firea după cum s-a arătat viețuirea ta, Sfinte Ierarhe Nicolae, că purtat ai fost de Dumnezeu în praznicele vieții acesteia ca să ajuți celor ce cu credință strigă ție:\nBucură-te, vlăstar ales din rădăcină cuvioasă;\nBucură-te, floare a raiului și a Bisericii;\nBucură-te, cel ce din scutece ai arătat sfințenie;\nBucură-te, chipul cel viu al bunătății celei dumnezeiești;\nBucură-te, înger în chip omenesc;\nBucură-te, om în viețuire îngerească;\nBucură-te, Sfinte Ierarhe Nicolae, mare Făcătorule de minuni!"
+        }
+      ]
+    },
+    {
+      "id": "rugaciuni_speciale",
+      "nume": "Rugăciuni speciale",
+      "icon": "favorite",
+      "rugaciuni": [
+        {
+          "id": "rugaciune_bolnavi",
+          "titlu": "Rugăciune pentru cei bolnavi",
+          "text": "Doamne Iisuse Hristoase, Doctorul sufletelor și al trupurilor, Cel ce ai vindecat pe cei bolnavi și ai alungat duhurile rele și ai iertat păcatele, cercetează și vindecă pe cei bolnavi de orice boală și neputință.\n\nDă-le, Doamne, sănătate sufletului și trupului, ca să Te slăvească pe Tine, Atotmilostivule și Atotputernice Dumnezeule, prin rugăciunile Preasfintei Maicii Tale și ale tuturor Sfinților. Amin."
+        },
+        {
+          "id": "rugaciune_morti",
+          "titlu": "Rugăciune pentru cei adormiți",
+          "text": "Doamne, Dumnezeule al duhurilor și al tot trupul, Care ai călcat moartea și ai surpat pe diavol și ai dăruit lumii viața: Însuți, Doamne, odihnește sufletele adormiților robilor Tăi în loc luminat, în loc cu verdeață, în loc de odihnă, de unde a fugit toată durerea, întristarea și suspinarea.\n\nOrice păcat au săvârșit ei cu cuvântul sau cu fapta sau cu gândul, ca un Dumnezeu bun și iubitor de oameni, iartă-le lor, că nu este om care să fi viețuit și să nu fi greșit. Numai Tu singur ești fără de păcat, dreptatea Ta este dreptate în veac și cuvântul Tău este adevărul.\n\nCă Tu ești Învierea, Viața și Odihna adormiților robilor Tăi... și a tuturor celor adormiți întru nădejdea învierii și a vieții de veci, Hristoase Dumnezeul nostru, și Ție slavă Îți înălțăm, împreună cu Cel fără de început al Tău Tată și cu Preasfântul și Bunul și de viață Făcătorul Tău Duh, acum și pururea și în vecii vecilor. Amin."
+        },
+        {
+          "id": "rugaciune_calatorie",
+          "titlu": "Rugăciune înainte de călătorie",
+          "text": "Doamne Iisuse Hristoase, Dumnezeul nostru, Însoțitorul lui Tobie, însoțește-mă și pe mine în această călătorie, ținând calea mea dreaptă, povățuindu-mă la locul unde doresc să ajung, ferind picioarele mele de orice împiedicare, scăpând trupul meu de tot primejdie și aducându-mă cu sănătate la limanul dorit.\n\nScoate-mă cu pace și cu bine din primejdiile văzduhului, ale apei și ale pământului, de dușmanii văzuți și nevăzuți. Fii Însoțitor al drumului meu și după îndeplinirea celor ce mi-am propus, întoarce-mă sănătos la casa mea.\n\nCă Ție slavă Îți înălțăm, împreună cu Cel fără de început al Tău Tată și cu Preasfântul Duh, acum și pururea și în vecii vecilor. Amin."
+        },
+        {
+          "id": "rugaciune_post",
+          "titlu": "Rugăciune în vreme de post",
+          "text": "Doamne și Stăpânul vieții mele, duhul trândăviei, al grijii de multe, al iubirii de stăpânire și al grăirii în deșert, nu mi-l da mie.\n\nIar duhul curăției, al gândului smerit, al răbdării și al dragostei, dăruiește-l mie, robului Tău.\n\nAșa, Doamne, Împărate, dăruiește-mi să-mi văd greșelile mele și să nu osândesc pe fratele meu, că binecuvântat ești în vecii vecilor. Amin.\n\nAceastă rugăciune a Sf. Efrem Sirul se citește în Postul Mare de mai multe ori pe zi, cu metanii."
+        }
+      ]
+    }
+  ]
+}
