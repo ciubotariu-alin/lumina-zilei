@@ -10,6 +10,13 @@ class HomeScreen extends StatelessWidget {
 
   const HomeScreen({super.key, required this.onNavigate});
 
+  String _firstSentence(String text) {
+    final trimmed = text.trim();
+    final match = RegExp(r'[.!?]').firstMatch(trimmed);
+    if (match == null) return trimmed.length > 200 ? '${trimmed.substring(0, 200)}…' : trimmed;
+    return trimmed.substring(0, match.end);
+  }
+
   String _formatDateRomanian(DateTime date) {
     const days = [
       'Luni', 'Marți', 'Miercuri', 'Joi', 'Vineri', 'Sâmbătă', 'Duminică'
@@ -44,11 +51,12 @@ class HomeScreen extends StatelessWidget {
 
             final today = DateTime.now();
             final todayInfo = provider.todayInfo;
-            final dailyQuote = provider.dailyQuote;
+            final dailyAcatist = provider.dailyAcatist;
+            final dailyRugaciune = provider.dailyRugaciune;
 
             return CustomScrollView(
               slivers: [
-                // App Bar with cross icon
+                // App Bar
                 SliverToBoxAdapter(
                   child: Container(
                     decoration: const BoxDecoration(
@@ -65,7 +73,6 @@ class HomeScreen extends StatelessWidget {
                         vertical: 20, horizontal: 16),
                     child: Column(
                       children: [
-                        // Orthodox cross
                         const Icon(
                           Icons.add,
                           size: 48,
@@ -88,11 +95,13 @@ class HomeScreen extends StatelessWidget {
                         const SizedBox(height: 12),
                         Text(
                           _formatDateRomanian(today),
-                          style:
-                              Theme.of(context).textTheme.titleMedium?.copyWith(
-                                    color: AppTheme.accentGoldLight,
-                                    fontStyle: FontStyle.italic,
-                                  ),
+                          style: Theme.of(context)
+                              .textTheme
+                              .titleMedium
+                              ?.copyWith(
+                                color: AppTheme.accentGoldLight,
+                                fontStyle: FontStyle.italic,
+                              ),
                           textAlign: TextAlign.center,
                         ),
                       ],
@@ -100,7 +109,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
 
-                // Saints of the day section
+                // Saints of the day — single card
                 SliverToBoxAdapter(
                   child: Padding(
                     padding: const EdgeInsets.fromLTRB(16, 20, 16, 8),
@@ -113,130 +122,143 @@ class HomeScreen extends StatelessWidget {
                                 color: AppTheme.goldColor, size: 20),
                             const SizedBox(width: 8),
                             Text(
-                              'Astăzi prăznuim:',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .headlineMedium,
+                              'Astăzi prăznuim',
+                              style:
+                                  Theme.of(context).textTheme.headlineMedium,
                             ),
                           ],
                         ),
                         const SizedBox(height: 12),
-                        if (todayInfo != null) ...[
-                          if (todayInfo.sarbatoare.isNotEmpty)
-                            Container(
-                              width: double.infinity,
-                              decoration: BoxDecoration(
-                                gradient: const LinearGradient(
-                                  colors: [
-                                    Color(0xFFF5EDE0),
-                                    Color(0xFFFAF6F0),
-                                  ],
-                                ),
-                                borderRadius: BorderRadius.circular(12),
-                                border: Border.all(
-                                  color: AppTheme.goldColor,
-                                  width: 1.5,
-                                ),
-                              ),
-                              padding: const EdgeInsets.all(16),
-                              child: Row(
-                                children: [
-                                  const Icon(
-                                    Icons.star,
-                                    color: AppTheme.goldColor,
-                                    size: 20,
-                                  ),
-                                  const SizedBox(width: 10),
-                                  Expanded(
-                                    child: Text(
-                                      todayInfo.sarbatoare,
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .titleMedium
-                                          ?.copyWith(
-                                            color: AppTheme.goldColor,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                    ),
-                                  ),
-                                ],
-                              ),
+                        Container(
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                            gradient: const LinearGradient(
+                              colors: [
+                                Color(0xFFF5EDE0),
+                                Color(0xFFFAF6F0),
+                              ],
                             ),
-                          if (todayInfo.sarbatoare.isNotEmpty &&
-                              todayInfo.sfinti.isNotEmpty)
-                            const SizedBox(height: 8),
-                          ...todayInfo.sfinti.map(
-                            (saint) => Padding(
-                              padding: const EdgeInsets.only(bottom: 6),
-                              child: Container(
-                                width: double.infinity,
-                                decoration: BoxDecoration(
-                                  color: AppTheme.cardColor,
-                                  borderRadius: BorderRadius.circular(8),
-                                  border: Border.all(
-                                    color: AppTheme.dividerColor,
-                                    width: 1,
-                                  ),
-                                ),
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 14, vertical: 10),
-                                child: Row(
+                            borderRadius: BorderRadius.circular(12),
+                            border: Border.all(
+                              color: AppTheme.goldColor,
+                              width: 1.5,
+                            ),
+                          ),
+                          padding: const EdgeInsets.all(16),
+                          child: todayInfo != null
+                              ? Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Container(
-                                      width: 6,
-                                      height: 6,
-                                      decoration: const BoxDecoration(
-                                        color: AppTheme.goldColor,
-                                        shape: BoxShape.circle,
+                                    if (todayInfo.sarbatoare.isNotEmpty) ...[
+                                      Row(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          const Icon(Icons.star,
+                                              color: AppTheme.goldColor,
+                                              size: 18),
+                                          const SizedBox(width: 8),
+                                          Expanded(
+                                            child: Text(
+                                              todayInfo.sarbatoare,
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .titleMedium
+                                                  ?.copyWith(
+                                                    color: AppTheme.goldColor,
+                                                    fontWeight: FontWeight.bold,
+                                                  ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      if (todayInfo.sfinti.isNotEmpty)
+                                        const SizedBox(height: 10),
+                                    ],
+                                    ...todayInfo.sfinti.map(
+                                      (saint) => Padding(
+                                        padding:
+                                            const EdgeInsets.only(bottom: 4),
+                                        child: Row(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Padding(
+                                              padding: const EdgeInsets.only(
+                                                  top: 6),
+                                              child: Container(
+                                                width: 5,
+                                                height: 5,
+                                                decoration: const BoxDecoration(
+                                                  color: AppTheme.goldColor,
+                                                  shape: BoxShape.circle,
+                                                ),
+                                              ),
+                                            ),
+                                            const SizedBox(width: 8),
+                                            Expanded(
+                                              child: Text(
+                                                saint,
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .bodyMedium
+                                                    ?.copyWith(
+                                                      color: const Color(
+                                                          0xFF4A3728),
+                                                    ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
                                       ),
                                     ),
-                                    const SizedBox(width: 10),
-                                    Expanded(
-                                      child: Text(
-                                        saint,
+                                    if (todayInfo.sarbatoare.isEmpty &&
+                                        todayInfo.sfinti.isEmpty)
+                                      Text(
+                                        'Nu există informații pentru această zi',
                                         style: Theme.of(context)
                                             .textTheme
-                                            .bodyMedium,
+                                            .bodyMedium
+                                            ?.copyWith(
+                                              color: const Color(0xFF4A3728),
+                                            ),
                                       ),
-                                    ),
                                   ],
+                                )
+                              : Text(
+                                  'Nu există informații pentru această zi',
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .bodyMedium
+                                      ?.copyWith(
+                                        color: const Color(0xFF4A3728),
+                                      ),
                                 ),
-                              ),
-                            ),
-                          ),
-                        ] else
-                          Card(
-                            child: Padding(
-                              padding: const EdgeInsets.all(16),
-                              child: Text(
-                                'Nu există informații pentru această zi',
-                                style: Theme.of(context).textTheme.bodyMedium,
-                              ),
-                            ),
-                          ),
+                        ),
                       ],
                     ),
                   ),
                 ),
 
-                // Verse of the day
-                if (dailyQuote != null)
+                // Acatistul Zilei
+                if (dailyAcatist != null)
                   SliverToBoxAdapter(
                     child: Padding(
-                      padding:
-                          const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 16, vertical: 8),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Row(
                             children: [
-                              const Icon(Icons.auto_stories,
+                              const Icon(Icons.menu_book,
                                   color: AppTheme.goldColor, size: 20),
                               const SizedBox(width: 8),
                               Text(
-                                'Versetul zilei',
-                                style:
-                                    Theme.of(context).textTheme.headlineMedium,
+                                'Acatistul Zilei',
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .headlineMedium,
                               ),
                             ],
                           ),
@@ -262,23 +284,139 @@ class HomeScreen extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  '"${dailyQuote.text}"',
+                                  dailyAcatist.titlu,
                                   style: Theme.of(context)
                                       .textTheme
-                                      .bodyLarge
+                                      .titleMedium
                                       ?.copyWith(
-                                        fontStyle: FontStyle.italic,
-                                        color: AppTheme.creamColor,
+                                        color: AppTheme.goldColor,
+                                        fontWeight: FontWeight.bold,
                                       ),
                                 ),
                                 const SizedBox(height: 12),
+                                Text(
+                                  dailyAcatist.text.length > 100
+                                      ? '${dailyAcatist.text.substring(0, 100)}…'
+                                      : dailyAcatist.text,
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .bodyMedium
+                                      ?.copyWith(
+                                        color: const Color(0xFF4A3728),
+                                        height: 1.6,
+                                      ),
+                                ),
+                                const SizedBox(height: 16),
                                 Align(
                                   alignment: Alignment.centerRight,
-                                  child: Text(
-                                    dailyQuote.reference,
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .labelLarge,
+                                  child: TextButton.icon(
+                                    onPressed: () => _showFullText(
+                                      context,
+                                      dailyAcatist.titlu,
+                                      dailyAcatist.text,
+                                    ),
+                                    icon: const Icon(Icons.open_in_full,
+                                        size: 16,
+                                        color: AppTheme.goldColor),
+                                    label: Text(
+                                      'Citește tot',
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .labelLarge,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+
+                // Rugaciunea Zilei
+                if (dailyRugaciune != null)
+                  SliverToBoxAdapter(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 16, vertical: 8),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            children: [
+                              const Icon(Icons.auto_stories,
+                                  color: AppTheme.goldColor, size: 20),
+                              const SizedBox(width: 8),
+                              Text(
+                                'Rugăciunea Zilei',
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .headlineMedium,
+                              ),
+                            ],
+                          ),
+                          const SizedBox(height: 12),
+                          Container(
+                            width: double.infinity,
+                            decoration: BoxDecoration(
+                              gradient: const LinearGradient(
+                                begin: Alignment.topLeft,
+                                end: Alignment.bottomRight,
+                                colors: [
+                                  Color(0xFFF5EDE0),
+                                  Color(0xFFFAF6F0),
+                                ],
+                              ),
+                              borderRadius: BorderRadius.circular(12),
+                              border: Border.all(
+                                color: AppTheme.goldColor.withOpacity(0.4),
+                              ),
+                            ),
+                            padding: const EdgeInsets.all(20),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  dailyRugaciune.titlu,
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .titleMedium
+                                      ?.copyWith(
+                                        color: AppTheme.goldColor,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                ),
+                                const SizedBox(height: 12),
+                                Text(
+                                  _firstSentence(dailyRugaciune.text),
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .bodyMedium
+                                      ?.copyWith(
+                                        color: const Color(0xFF4A3728),
+                                        fontStyle: FontStyle.italic,
+                                        height: 1.6,
+                                      ),
+                                ),
+                                const SizedBox(height: 16),
+                                Align(
+                                  alignment: Alignment.centerRight,
+                                  child: TextButton.icon(
+                                    onPressed: () => _showFullText(
+                                      context,
+                                      dailyRugaciune.titlu,
+                                      dailyRugaciune.text,
+                                    ),
+                                    icon: const Icon(Icons.open_in_full,
+                                        size: 16,
+                                        color: AppTheme.goldColor),
+                                    label: Text(
+                                      'Citește tot',
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .labelLarge,
+                                    ),
                                   ),
                                 ),
                               ],
@@ -337,63 +475,66 @@ class HomeScreen extends StatelessWidget {
 
                 // Donation card
                 if (FeatureFlags.donationsEnabled)
-                SliverToBoxAdapter(
-                  child: Padding(
-                    padding: const EdgeInsets.fromLTRB(16, 8, 16, 28),
-                    child: InkWell(
-                      onTap: () => onNavigate(4),
-                      borderRadius: BorderRadius.circular(12),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: AppTheme.cardColor,
-                          borderRadius: BorderRadius.circular(12),
-                          border: Border.all(
-                            color: AppTheme.goldColor.withOpacity(0.25),
+                  SliverToBoxAdapter(
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(16, 8, 16, 28),
+                      child: InkWell(
+                        onTap: () => onNavigate(4),
+                        borderRadius: BorderRadius.circular(12),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: AppTheme.cardColor,
+                            borderRadius: BorderRadius.circular(12),
+                            border: Border.all(
+                              color: AppTheme.goldColor.withOpacity(0.25),
+                            ),
                           ),
-                        ),
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 16, vertical: 14),
-                        child: Row(
-                          children: [
-                            const Icon(
-                              Icons.volunteer_activism,
-                              color: AppTheme.goldColor,
-                              size: 22,
-                            ),
-                            const SizedBox(width: 12),
-                            Expanded(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    'Această aplicație este gratuită',
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .titleSmall
-                                        ?.copyWith(fontSize: 13),
-                                  ),
-                                  const SizedBox(height: 2),
-                                  Text(
-                                    'Susține-ne cu o donație mică 🙏',
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .bodySmall
-                                        ?.copyWith(fontSize: 12),
-                                  ),
-                                ],
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 16, vertical: 14),
+                          child: Row(
+                            children: [
+                              const Icon(
+                                Icons.volunteer_activism,
+                                color: AppTheme.goldColor,
+                                size: 22,
                               ),
-                            ),
-                            const Icon(
-                              Icons.chevron_right,
-                              color: AppTheme.goldColor,
-                              size: 20,
-                            ),
-                          ],
+                              const SizedBox(width: 12),
+                              Expanded(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'Această aplicație este gratuită',
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .titleSmall
+                                          ?.copyWith(fontSize: 13),
+                                    ),
+                                    const SizedBox(height: 2),
+                                    Text(
+                                      'Susține-ne cu o donație mică 🙏',
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodySmall
+                                          ?.copyWith(fontSize: 12),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              const Icon(
+                                Icons.chevron_right,
+                                color: AppTheme.goldColor,
+                                size: 20,
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),
                   ),
-                ),
+
+                if (!FeatureFlags.donationsEnabled)
+                  const SliverToBoxAdapter(child: SizedBox(height: 28)),
               ],
             );
           },
@@ -402,6 +543,59 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
+  void _showFullText(BuildContext context, String title, String text) {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: AppTheme.backgroundColor,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+      ),
+      builder: (context) => DraggableScrollableSheet(
+        initialChildSize: 0.9,
+        maxChildSize: 0.95,
+        minChildSize: 0.5,
+        expand: false,
+        builder: (context, scrollController) => Column(
+          children: [
+            Container(
+              margin: const EdgeInsets.only(top: 12, bottom: 8),
+              width: 40,
+              height: 4,
+              decoration: BoxDecoration(
+                color: AppTheme.dividerColor,
+                borderRadius: BorderRadius.circular(2),
+              ),
+            ),
+            Padding(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+              child: Text(
+                title,
+                style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                      color: AppTheme.goldColor,
+                    ),
+                textAlign: TextAlign.center,
+              ),
+            ),
+            const Divider(color: AppTheme.dividerColor),
+            Expanded(
+              child: SingleChildScrollView(
+                controller: scrollController,
+                padding: const EdgeInsets.fromLTRB(20, 8, 20, 40),
+                child: Text(
+                  text,
+                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                        height: 1.7,
+                      ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
 }
 
 class _QuickActionButton extends StatelessWidget {

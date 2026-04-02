@@ -4,6 +4,8 @@ import '../models/saint.dart';
 import '../models/prayer.dart';
 import '../models/bible_quote.dart';
 import '../models/fasting_info.dart';
+import '../models/acatist.dart';
+import '../models/rugaciune_zilnica.dart';
 import '../services/data_service.dart';
 import '../services/notification_service.dart';
 
@@ -17,6 +19,8 @@ class AppProvider extends ChangeNotifier {
   List<BibleQuote> _bibleQuotes = [];
   BibleQuote? _dailyQuote;
   CalendarDay? _todayInfo;
+  Acatist? _dailyAcatist;
+  RugaciuneZilnica? _dailyRugaciune;
   bool _isLoading = true;
   String? _error;
 
@@ -29,6 +33,8 @@ class AppProvider extends ChangeNotifier {
   List<BibleQuote> get bibleQuotes => _bibleQuotes;
   BibleQuote? get dailyQuote => _dailyQuote;
   CalendarDay? get todayInfo => _todayInfo;
+  Acatist? get dailyAcatist => _dailyAcatist;
+  RugaciuneZilnica? get dailyRugaciune => _dailyRugaciune;
   bool get isLoading => _isLoading;
   String? get error => _error;
   int get currentBibleIndex => _currentBibleIndex;
@@ -47,10 +53,14 @@ class AppProvider extends ChangeNotifier {
       _calendar = await _dataService.loadCalendar();
       _allPrayers = await _dataService.loadPrayers();
       _bibleQuotes = await _dataService.loadBibleQuotes();
+      final acatiste = await _dataService.loadAcatiste();
+      final rugaciuniZilnice = await _dataService.loadRugaciuniZilnice();
 
       final today = DateTime.now();
       _todayInfo = _dataService.getDayInfo(_calendar, today);
       _dailyQuote = _dataService.getDailyQuote(_bibleQuotes, today);
+      _dailyAcatist = _dataService.getDailyAcatist(acatiste, today);
+      _dailyRugaciune = _dataService.getDailyRugaciune(rugaciuniZilnice, today);
 
       // Set initial bible index to daily quote
       if (_bibleQuotes.isNotEmpty) {

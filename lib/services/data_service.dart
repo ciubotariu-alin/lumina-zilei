@@ -7,6 +7,8 @@ import '../models/saint.dart';
 import '../models/prayer.dart';
 import '../models/bible_quote.dart';
 import '../models/fasting_info.dart';
+import '../models/acatist.dart';
+import '../models/rugaciune_zilnica.dart';
 
 /// URL-ul de unde se descarcă calendarul ortodox dinamic.
 /// Pași pentru GitHub:
@@ -35,6 +37,8 @@ class DataService {
   Map<String, CalendarDay>? _calendarCache;
   List<PrayerCategory>? _prayersCache;
   List<BibleQuote>? _biblesCache;
+  List<Acatist>? _acatisteCache;
+  List<RugaciuneZilnica>? _rugaciuniZilniceCache;
 
   // Cache OCMA
   final Map<int, Map<String, dynamic>> _ocmaYearCache = {};
@@ -131,6 +135,68 @@ class DataService {
     final key =
         '${date.month.toString().padLeft(2, '0')}-${date.day.toString().padLeft(2, '0')}';
     return calendar[key];
+  }
+
+  Future<List<Acatist>> loadAcatiste() async {
+    if (_acatisteCache != null) return _acatisteCache!;
+
+    try {
+      final jsonString = await rootBundle.loadString('assets/data/acatiste.json');
+      final Map<String, dynamic> jsonData = json.decode(jsonString);
+      final List<dynamic> list = jsonData['acatiste'] as List? ?? [];
+      _acatisteCache = list
+          .map((a) => Acatist.fromJson(a as Map<String, dynamic>))
+          .toList();
+    } catch (_) {
+      _acatisteCache = [];
+    }
+    return _acatisteCache!;
+  }
+
+  Future<List<RugaciuneZilnica>> loadRugaciuniZilnice() async {
+    if (_rugaciuniZilniceCache != null) return _rugaciuniZilniceCache!;
+
+    try {
+      final jsonString =
+          await rootBundle.loadString('assets/data/rugaciuni_zilnice.json');
+      final Map<String, dynamic> jsonData = json.decode(jsonString);
+      final List<dynamic> list = jsonData['rugaciuni'] as List? ?? [];
+      _rugaciuniZilniceCache = list
+          .map((r) => RugaciuneZilnica.fromJson(r as Map<String, dynamic>))
+          .toList();
+    } catch (_) {
+      _rugaciuniZilniceCache = [];
+    }
+    return _rugaciuniZilniceCache!;
+  }
+
+  /// Returns the acatist for today (by month/day), or cycles through all if no match.
+  Acatist? getDailyAcatist(List<Acatist> acatiste, DateTime date) {
+    if (acatiste.isEmpty) return null;
+
+    // First try exact date match
+    final match = acatiste.where(
+      (a) => a.luna == date.month && a.zi == date.day,
+    ).toList();
+    if (match.isNotEmpty) return match.first;
+
+    // Fallback: cycle through all acatiste by day of year
+    final dayOfYear = _dayOfYear(date);
+    final withText = acatiste.where((a) => a.text.isNotEmpty).toList();
+    if (withText.isEmpty) return null;
+    return withText[dayOfYear % withText.length];
+  }
+
+  /// Returns the prayer for today by exact month/day match only.
+  /// Returns null if no prayer exists for this date.
+  RugaciuneZilnica? getDailyRugaciune(
+      List<RugaciuneZilnica> rugaciuni, DateTime date) {
+    if (rugaciuni.isEmpty) return null;
+
+    final match = rugaciuni
+        .where((r) => r.luna == date.month && r.zi == date.day)
+        .toList();
+    return match.isNotEmpty ? match.first : null;
   }
 
   BibleQuote getDailyQuote(List<BibleQuote> quotes, DateTime date) {
