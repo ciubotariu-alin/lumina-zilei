@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import '../config/feature_flags.dart';
 import '../providers/app_provider.dart';
 import '../theme/app_theme.dart';
+import 'settings_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   final void Function(int index) onNavigate;
@@ -71,40 +72,70 @@ class HomeScreen extends StatelessWidget {
                         )
                       ],
                     ),
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 20, horizontal: 16),
+                    padding: const EdgeInsets.only(bottom: 20),
                     child: Column(
                       children: [
-                        Image.asset(
-                          'assets/pictures/Cross.png',
-                          width: 64,
-                          height: 64,
-                        ),
-                        const SizedBox(height: 4),
-                        Text(
-                          'LUMINA ZILEI',
-                          style: Theme.of(context)
-                              .textTheme
-                              .headlineLarge
-                              ?.copyWith(letterSpacing: 3),
-                        ),
-                        const SizedBox(height: 8),
-                        Container(
-                          height: 1,
-                          width: 120,
-                          color: AppTheme.goldColor.withOpacity(0.5),
-                        ),
-                        const SizedBox(height: 12),
-                        Text(
-                          _formatDateRomanian(today),
-                          style: Theme.of(context)
-                              .textTheme
-                              .titleMedium
-                              ?.copyWith(
-                                color: AppTheme.accentGoldLight,
-                                fontStyle: FontStyle.italic,
+                        // Header zone — settings button
+                        Align(
+                          alignment: Alignment.centerRight,
+                          child: Padding(
+                            padding: const EdgeInsets.only(right: 8, top: 4),
+                            child: IconButton(
+                              icon: const Icon(
+                                Icons.settings,
+                                color: AppTheme.goldColor,
+                                size: 22,
                               ),
-                          textAlign: TextAlign.center,
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (_) => const SettingsScreen(),
+                                  ),
+                                );
+                              },
+                              tooltip: 'Setări',
+                            ),
+                          ),
+                        ),
+                        // Branding content
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 16),
+                          child: Column(
+                            children: [
+                              Image.asset(
+                                'assets/pictures/Cross.png',
+                                width: 64,
+                                height: 64,
+                              ),
+                              const SizedBox(height: 4),
+                              Text(
+                                'LUMINA ZILEI',
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .headlineLarge
+                                    ?.copyWith(letterSpacing: 3),
+                              ),
+                              const SizedBox(height: 8),
+                              Container(
+                                height: 1,
+                                width: 120,
+                                color: AppTheme.goldColor.withOpacity(0.5),
+                              ),
+                              const SizedBox(height: 12),
+                              Text(
+                                _formatDateRomanian(today),
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .titleMedium
+                                    ?.copyWith(
+                                      color: AppTheme.accentGoldLight,
+                                      fontStyle: FontStyle.italic,
+                                    ),
+                                textAlign: TextAlign.center,
+                              ),
+                            ],
+                          ),
                         ),
                       ],
                     ),

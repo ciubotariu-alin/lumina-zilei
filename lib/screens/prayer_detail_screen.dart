@@ -98,14 +98,10 @@ class _PrayerDetailScreenState extends State<PrayerDetailScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   // Ornamental cross at top
-                  const Center(
+                  Center(
                     child: Padding(
-                      padding: EdgeInsets.only(bottom: 20),
-                      child: Icon(
-                        Icons.add,
-                        color: AppTheme.goldColor,
-                        size: 28,
-                      ),
+                      padding: const EdgeInsets.only(bottom: 20),
+                      child: Image.asset('assets/pictures/Cross.png', width: 24, height: 24),
                     ),
                   ),
 
@@ -123,23 +119,19 @@ class _PrayerDetailScreenState extends State<PrayerDetailScreen> {
 
                   // Bottom ornament
                   const SizedBox(height: 32),
-                  const Center(
+                  Center(
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        SizedBox(
+                        const SizedBox(
                           width: 40,
                           child: Divider(color: AppTheme.goldColor, thickness: 1),
                         ),
                         Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 8),
-                          child: Icon(
-                            Icons.add,
-                            color: AppTheme.goldColor,
-                            size: 16,
-                          ),
+                          padding: const EdgeInsets.symmetric(horizontal: 8),
+                          child: Image.asset('assets/pictures/Cross.png', width: 24, height: 24),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 40,
                           child: Divider(color: AppTheme.goldColor, thickness: 1),
                         ),

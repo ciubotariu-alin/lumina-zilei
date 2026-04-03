@@ -60,6 +60,7 @@ class _DonationsScreenState extends State<DonationsScreen> {
       return;
     }
 
+    if (!mounted) return;
     setState(() => _isLoading = true);
 
     // Format corect Revolut.me: /username/suma/moneda

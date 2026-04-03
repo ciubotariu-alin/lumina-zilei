@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart';
+import 'package:flutter/widgets.dart';
 
 import '../models/saint.dart';
 import '../models/prayer.dart';
@@ -6,10 +7,12 @@ import '../models/bible_quote.dart';
 import '../models/fasting_info.dart';
 import '../models/acatist.dart';
 import '../models/rugaciune_zilnica.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
 import '../services/data_service.dart';
 import '../services/notification_service.dart';
 
-class AppProvider extends ChangeNotifier {
+class AppProvider extends ChangeNotifier with WidgetsBindingObserver {
   final DataService _dataService = DataService();
   final NotificationService _notificationService = NotificationService();
 
@@ -26,6 +29,8 @@ class AppProvider extends ChangeNotifier {
 
   // Current bible index for navigation
   int _currentBibleIndex = 0;
+
+  DateTime? _loadedDate;
 
   DateTime get selectedDate => _selectedDate;
   Map<String, CalendarDay> get calendar => _calendar;
@@ -45,6 +50,8 @@ class AppProvider extends ChangeNotifier {
   }
 
   Future<void> init() async {
+    WidgetsBinding.instance.addObserver(this);
+
     _isLoading = true;
     _error = null;
     notifyListeners();
@@ -57,6 +64,7 @@ class AppProvider extends ChangeNotifier {
       final rugaciuniZilnice = await _dataService.loadRugaciuniZilnice();
 
       final today = DateTime.now();
+      _loadedDate = DateTime(today.year, today.month, today.day);
       _todayInfo = _dataService.getDayInfo(_calendar, today);
       _dailyQuote = _dataService.getDailyQuote(_bibleQuotes, today);
       _dailyAcatist = _dataService.getDailyAcatist(acatiste, today);
@@ -68,17 +76,59 @@ class AppProvider extends ChangeNotifier {
         _currentBibleIndex = dayOfYear % _bibleQuotes.length;
       }
 
-      // Schedule daily notification
-      await _notificationService.scheduleDailyNotification(
-        todayInfo: _todayInfo,
-        date: today,
-      );
+      // Schedule daily notification only if user has enabled it
+      final prefs = await SharedPreferences.getInstance();
+      final notificationsEnabled = prefs.getBool('notifications_enabled') ?? false;
+      if (notificationsEnabled) {
+        final hour = prefs.getInt('notification_hour') ?? 8;
+        final minute = prefs.getInt('notification_minute') ?? 0;
+        await _notificationService.scheduleDaily(hour, minute);
+      }
     } catch (e) {
       _error = e.toString();
     } finally {
       _isLoading = false;
       notifyListeners();
     }
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state != AppLifecycleState.resumed) return;
+    final now = DateTime.now();
+    final today = DateTime(now.year, now.month, now.day);
+    if (_loadedDate != null && today.isAfter(_loadedDate!)) {
+      _refreshDailyContent();
+    }
+  }
+
+  Future<void> _refreshDailyContent() async {
+    final today = DateTime.now();
+    _loadedDate = DateTime(today.year, today.month, today.day);
+    _todayInfo = _dataService.getDayInfo(_calendar, today);
+    _dailyQuote = _dataService.getDailyQuote(_bibleQuotes, today);
+    try {
+      final acatiste = await _dataService.loadAcatiste();
+      final rugaciuniZilnice = await _dataService.loadRugaciuniZilnice();
+      _dailyAcatist = _dataService.getDailyAcatist(acatiste, today);
+      _dailyRugaciune = _dataService.getDailyRugaciune(rugaciuniZilnice, today);
+      final prefs = await SharedPreferences.getInstance();
+      final notificationsEnabled = prefs.getBool('notifications_enabled') ?? false;
+      if (notificationsEnabled) {
+        final hour = prefs.getInt('notification_hour') ?? 8;
+        final minute = prefs.getInt('notification_minute') ?? 0;
+        await _notificationService.scheduleDaily(hour, minute);
+      }
+    } catch (e) {
+      debugPrint('[AppProvider] _refreshDailyContent error: $e');
+    }
+    notifyListeners();
   }
 
   CalendarDay? getDayInfo(DateTime date) {

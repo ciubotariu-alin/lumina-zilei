@@ -71,8 +71,10 @@ class CalendarDay {
           date == other.date &&
           sarbatoare == other.sarbatoare &&
           apostol == other.apostol &&
-          evanghelie == other.evanghelie;
+          evanghelie == other.evanghelie &&
+          listEquals(sfinti, other.sfinti);
 
   @override
-  int get hashCode => Object.hash(date, sarbatoare, apostol, evanghelie);
+  int get hashCode =>
+      Object.hash(date, sarbatoare, apostol, evanghelie, Object.hashAll(sfinti));
 }

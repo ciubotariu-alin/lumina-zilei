@@ -1,7 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:timezone/timezone.dart' as tz;
-import 'package:timezone/data/latest.dart' as tz;
 
 import '../models/saint.dart';
 
@@ -16,7 +15,6 @@ class NotificationService {
 
   Future<void> initialize() async {
     if (kIsWeb) return;
-    tz.initializeTimeZones();
 
     const androidSettings =
         AndroidInitializationSettings('@mipmap/ic_launcher');
@@ -100,6 +98,47 @@ class NotificationService {
       );
     } catch (e, st) {
       debugPrint('[NotificationService] zonedSchedule error: $e\n$st');
+    }
+  }
+
+  Future<void> scheduleDaily(int hour, int minute) async {
+    if (kIsWeb) return;
+
+    const androidDetails = AndroidNotificationDetails(
+      'lumina_zilei_daily',
+      'Lumina Zilei',
+      channelDescription: 'Notificări zilnice cu sfinții și rugăciunile zilei',
+      importance: Importance.defaultImportance,
+      priority: Priority.defaultPriority,
+    );
+    const darwinDetails = DarwinNotificationDetails();
+    const details = NotificationDetails(
+      android: androidDetails,
+      iOS: darwinDetails,
+      macOS: darwinDetails,
+    );
+
+    await _plugin.cancel(id: _dailyNotificationId);
+
+    final now = tz.TZDateTime.now(tz.local);
+    var scheduledDate =
+        tz.TZDateTime(tz.local, now.year, now.month, now.day, hour, minute, 0);
+    if (scheduledDate.isBefore(now)) {
+      scheduledDate = scheduledDate.add(const Duration(days: 1));
+    }
+
+    try {
+      await _plugin.zonedSchedule(
+        id: _dailyNotificationId,
+        title: 'Lumina Zilei',
+        body: 'Deschide aplicația pentru rugăciunile zilei',
+        scheduledDate: scheduledDate,
+        notificationDetails: details,
+        androidScheduleMode: AndroidScheduleMode.inexactAllowWhileIdle,
+        matchDateTimeComponents: DateTimeComponents.time,
+      );
+    } catch (e, st) {
+      debugPrint('[NotificationService] scheduleDaily error: $e\n$st');
     }
   }
 

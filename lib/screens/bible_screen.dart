@@ -35,8 +35,7 @@ class _BibleScreenState extends State<BibleScreen> {
 
   /// Recalculează cache-ul cărților când se schimbă lista de quotes
   void _rebuildBooksCache(List<BibleQuote> quotes) {
-    if (quotes.length == _cachedQuotes.length &&
-        (quotes.isEmpty || quotes.first == _cachedQuotes.first)) return;
+    if (identical(quotes, _cachedQuotes)) return;
     _cachedQuotes = quotes;
     _bookQuotesCache.clear();
 
