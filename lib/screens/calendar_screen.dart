@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import '../providers/app_provider.dart';
 import '../models/saint.dart';
 import '../models/fasting_info.dart';
+import '../services/analytics_service.dart';
 import '../theme/app_theme.dart';
 
 class CalendarScreen extends StatefulWidget {
@@ -220,6 +221,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
 
   void _showDayDetails(
       BuildContext context, DateTime date, CalendarDay? dayInfo) {
+    AnalyticsService().logCalendarDateSelected(date);
     final month = date.month >= 1 && date.month <= 12 ? _romanianMonths[date.month] : '';
     final dateStr = '${date.day} $month ${date.year}';
     final fastingFuture =

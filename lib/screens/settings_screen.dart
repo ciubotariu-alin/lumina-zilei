@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../services/analytics_service.dart';
 import '../services/notification_service.dart';
 import '../theme/app_theme.dart';
 
@@ -40,10 +41,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
       _notificationsEnabled = value;
     });
     if (value) {
+      AnalyticsService().logNotificationEnabled();
       await NotificationService().requestPermissions();
       await NotificationService()
           .scheduleDaily(_notificationHour, _notificationMinute);
     } else {
+      AnalyticsService().logNotificationDisabled();
       await NotificationService().cancelAll();
     }
   }
@@ -73,6 +76,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
       _notificationHour = picked.hour;
       _notificationMinute = picked.minute;
     });
+    AnalyticsService().logNotificationTimeChanged(picked.hour, picked.minute);
     await NotificationService().scheduleDaily(picked.hour, picked.minute);
   }
 

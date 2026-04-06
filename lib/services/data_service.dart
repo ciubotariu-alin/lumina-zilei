@@ -183,7 +183,8 @@ class DataService {
     ).toList();
     if (match.isNotEmpty) return match.first;
 
-    // Fallback: cycle through all acatiste by day of year
+    // Fallback: no exact match for today — cycle through all acatiste with content.
+    // All entries in the dataset are date-specific, so zi==null would always be empty.
     final dayOfYear = _dayOfYear(date);
     final withText = acatiste.where((a) => a.text.isNotEmpty).toList();
     if (withText.isEmpty) return null;

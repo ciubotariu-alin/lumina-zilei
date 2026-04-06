@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 
 import '../providers/app_provider.dart';
 import '../models/prayer.dart';
+import '../services/analytics_service.dart';
 import '../theme/app_theme.dart';
 import 'prayer_detail_screen.dart';
 
@@ -175,6 +176,7 @@ class _CategoryExpansionTileState extends State<_CategoryExpansionTile> {
                 ...widget.category.rugaciuni.map(
                   (prayer) => _PrayerListTile(
                     prayer: prayer,
+                    categoryName: widget.category.nume,
                     isLast: prayer == widget.category.rugaciuni.last,
                   ),
                 ),
@@ -188,9 +190,14 @@ class _CategoryExpansionTileState extends State<_CategoryExpansionTile> {
 
 class _PrayerListTile extends StatelessWidget {
   final Prayer prayer;
+  final String categoryName;
   final bool isLast;
 
-  const _PrayerListTile({required this.prayer, required this.isLast});
+  const _PrayerListTile({
+    required this.prayer,
+    required this.categoryName,
+    required this.isLast,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -198,6 +205,10 @@ class _PrayerListTile extends StatelessWidget {
       children: [
         InkWell(
           onTap: () {
+            AnalyticsService().logPrayerOpened(
+              prayerTitle: prayer.titlu,
+              categoryName: categoryName,
+            );
             Navigator.push(
               context,
               MaterialPageRoute(

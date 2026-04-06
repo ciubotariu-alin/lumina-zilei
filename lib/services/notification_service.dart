@@ -3,6 +3,7 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:timezone/timezone.dart' as tz;
 
 import '../models/saint.dart';
+import 'analytics_service.dart';
 
 class NotificationService {
   static final NotificationService _instance = NotificationService._internal();
@@ -12,6 +13,11 @@ class NotificationService {
   static const int _dailyNotificationId = 1001;
   final FlutterLocalNotificationsPlugin _plugin =
       FlutterLocalNotificationsPlugin();
+
+  // Guards against double-firing analytics on Android cold-start:
+  // onDidReceiveNotificationResponse fires during initialize() for cold-starts,
+  // and getNotificationAppLaunchDetails() also returns true — we want exactly one log.
+  bool _coldStartChecked = false;
 
   Future<void> initialize() async {
     if (kIsWeb) return;
@@ -29,7 +35,23 @@ class NotificationService {
         iOS: darwinSettings,
         macOS: darwinSettings,
       ),
+      onDidReceiveNotificationResponse: (_) {
+        // On Android, this fires for both foreground taps AND cold-start taps.
+        // Cold-start is handled via getNotificationAppLaunchDetails() below.
+        // We suppress this callback during initialization to avoid double-logging.
+        if (_coldStartChecked) {
+          AnalyticsService().logAppOpenedFromNotification();
+        }
+      },
     );
+
+    // Cold start: app was closed and user tapped the notification.
+    // This is the authoritative source for cold-start detection on all platforms.
+    final launchDetails = await _plugin.getNotificationAppLaunchDetails();
+    if (launchDetails?.didNotificationLaunchApp == true) {
+      AnalyticsService().logAppOpenedFromNotification();
+    }
+    _coldStartChecked = true;
   }
 
   Future<void> requestPermissions() async {

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../services/analytics_service.dart';
 import '../theme/app_theme.dart';
 
 // Înlocuiește cu username-ul tău Revolut (fără @)
@@ -22,6 +23,12 @@ class _DonationsScreenState extends State<DonationsScreen> {
   bool _isLoading = false;
 
   static const _presetAmounts = [1, 5, 10];
+
+  @override
+  void initState() {
+    super.initState();
+    AnalyticsService().logDonationScreenOpened();
+  }
 
   @override
   void dispose() {
@@ -62,6 +69,8 @@ class _DonationsScreenState extends State<DonationsScreen> {
 
     if (!mounted) return;
     setState(() => _isLoading = true);
+
+    AnalyticsService().logDonationInitiated('revolut');
 
     // Format corect Revolut.me: /username/suma/moneda
     final url = 'https://revolut.me/$_revolutUsername/$amount/RON';

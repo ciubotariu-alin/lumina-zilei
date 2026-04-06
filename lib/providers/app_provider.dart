@@ -31,6 +31,7 @@ class AppProvider extends ChangeNotifier with WidgetsBindingObserver {
   int _currentBibleIndex = 0;
 
   DateTime? _loadedDate;
+  bool _refreshing = false;
 
   DateTime get selectedDate => _selectedDate;
   Map<String, CalendarDay> get calendar => _calendar;
@@ -103,14 +104,18 @@ class AppProvider extends ChangeNotifier with WidgetsBindingObserver {
     if (state != AppLifecycleState.resumed) return;
     final now = DateTime.now();
     final today = DateTime(now.year, now.month, now.day);
-    if (_loadedDate != null && today.isAfter(_loadedDate!)) {
-      _refreshDailyContent();
+    if (!_refreshing && _loadedDate != null && today.isAfter(_loadedDate!)) {
+      _refreshing = true;
+      _refreshDailyContent().whenComplete(() => _refreshing = false);
     }
   }
 
   Future<void> _refreshDailyContent() async {
     final today = DateTime.now();
-    _loadedDate = DateTime(today.year, today.month, today.day);
+    final todayNormalized = DateTime(today.year, today.month, today.day);
+    // Optimistically advance _loadedDate to prevent concurrent calls from
+    // didChangeAppLifecycleState. Reset to yesterday on failure to allow retry.
+    _loadedDate = todayNormalized;
     _todayInfo = _dataService.getDayInfo(_calendar, today);
     _dailyQuote = _dataService.getDailyQuote(_bibleQuotes, today);
     try {
@@ -127,6 +132,8 @@ class AppProvider extends ChangeNotifier with WidgetsBindingObserver {
       }
     } catch (e) {
       debugPrint('[AppProvider] _refreshDailyContent error: $e');
+      // Reset to yesterday so the next app resume will retry the failed load.
+      _loadedDate = todayNormalized.subtract(const Duration(days: 1));
     }
     notifyListeners();
   }
