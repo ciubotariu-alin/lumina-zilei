@@ -32,6 +32,7 @@ class AppProvider extends ChangeNotifier with WidgetsBindingObserver {
 
   DateTime? _loadedDate;
   bool _refreshing = false;
+  bool _disposed = false;
 
   DateTime get selectedDate => _selectedDate;
   Map<String, CalendarDay> get calendar => _calendar;
@@ -95,6 +96,7 @@ class AppProvider extends ChangeNotifier with WidgetsBindingObserver {
 
   @override
   void dispose() {
+    _disposed = true;
     WidgetsBinding.instance.removeObserver(this);
     super.dispose();
   }
@@ -121,9 +123,11 @@ class AppProvider extends ChangeNotifier with WidgetsBindingObserver {
     try {
       final acatiste = await _dataService.loadAcatiste();
       final rugaciuniZilnice = await _dataService.loadRugaciuniZilnice();
+      if (_disposed) return;
       _dailyAcatist = _dataService.getDailyAcatist(acatiste, today);
       _dailyRugaciune = _dataService.getDailyRugaciune(rugaciuniZilnice, today);
       final prefs = await SharedPreferences.getInstance();
+      if (_disposed) return;
       final notificationsEnabled = prefs.getBool('notifications_enabled') ?? false;
       if (notificationsEnabled) {
         final hour = prefs.getInt('notification_hour') ?? 8;
@@ -135,7 +139,7 @@ class AppProvider extends ChangeNotifier with WidgetsBindingObserver {
       // Reset to yesterday so the next app resume will retry the failed load.
       _loadedDate = todayNormalized.subtract(const Duration(days: 1));
     }
-    notifyListeners();
+    if (!_disposed) notifyListeners();
   }
 
   CalendarDay? getDayInfo(DateTime date) {

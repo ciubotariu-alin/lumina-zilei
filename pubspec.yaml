@@ -33,4 +33,5 @@ flutter:
     - assets/data/bible_quotes.json
     - assets/data/acatiste.json
     - assets/data/rugaciuni_zilnice.json
+    - assets/data/parohii.json
     - assets/pictures/

@@ -10,6 +10,7 @@ import '../models/bible_quote.dart';
 import '../models/fasting_info.dart';
 import '../models/acatist.dart';
 import '../models/rugaciune_zilnica.dart';
+import '../models/parohie.dart';
 
 /// URL-ul de unde se descarcă calendarul ortodox dinamic.
 /// Pași pentru GitHub:
@@ -40,6 +41,7 @@ class DataService {
   List<BibleQuote>? _biblesCache;
   List<Acatist>? _acatisteCache;
   List<RugaciuneZilnica>? _rugaciuniZilniceCache;
+  List<Parohie>? _parohiiCache;
 
   // Cache OCMA
   final Map<int, Map<String, dynamic>> _ocmaYearCache = {};
@@ -209,6 +211,24 @@ class DataService {
     }
     final dayOfYear = _dayOfYear(date);
     return quotes[dayOfYear % quotes.length];
+  }
+
+  Future<List<Parohie>> loadParohii() async {
+    if (_parohiiCache != null) return _parohiiCache!;
+
+    try {
+      final jsonString =
+          await rootBundle.loadString('assets/data/parohii.json');
+      final List<dynamic> jsonData = json.decode(jsonString);
+      _parohiiCache = jsonData
+          .map((p) => Parohie.fromJson(p as Map<String, dynamic>))
+          .where((p) => p.email.isNotEmpty)
+          .toList();
+    } catch (e, st) {
+      debugPrint('[DataService] Error loading parohii: $e\n$st');
+      _parohiiCache = [];
+    }
+    return _parohiiCache!;
   }
 
   int _dayOfYear(DateTime date) {

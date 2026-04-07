@@ -34,21 +34,21 @@ class _SettingsScreenState extends State<SettingsScreen> {
   }
 
   Future<void> _setNotificationsEnabled(bool value) async {
+    if (value) {
+      await NotificationService().requestPermissions();
+      await NotificationService()
+          .scheduleDaily(_notificationHour, _notificationMinute);
+      AnalyticsService().logNotificationEnabled();
+    } else {
+      await NotificationService().cancelAll();
+      AnalyticsService().logNotificationDisabled();
+    }
     final prefs = await SharedPreferences.getInstance();
     await prefs.setBool('notifications_enabled', value);
     if (!mounted) return;
     setState(() {
       _notificationsEnabled = value;
     });
-    if (value) {
-      AnalyticsService().logNotificationEnabled();
-      await NotificationService().requestPermissions();
-      await NotificationService()
-          .scheduleDaily(_notificationHour, _notificationMinute);
-    } else {
-      AnalyticsService().logNotificationDisabled();
-      await NotificationService().cancelAll();
-    }
   }
 
   Future<void> _pickNotificationTime() async {

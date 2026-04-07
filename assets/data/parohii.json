@@ -1,0 +1,502 @@
+[
+  {
+    "id": "test",
+    "denumire": "Test Parohie",
+    "hram": "Test",
+    "paroh": "Alin Ciubotariu",
+    "adresa": "Campia Libertatii, 42",
+    "email": "ciubotariu.alin@gmail.com",
+    "telefon": "0784198098",
+    "site": "www.test.ro"
+  },
+  {
+    "id": "acoperamantul-maicii-domnului-titan",
+    "denumire": "Acoperământul Maicii Domnului - Titan",
+    "hram": "Acoperământul Maicii Domnului, Sf. Cosma și Damian, Sf. Ierarh Calinic de la Cernica",
+    "paroh": "Pr. Marius Ciprian Dinu",
+    "adresa": "Str. Prisaca Dornei, Nr. 2, sector 3",
+    "email": "dmariusciprian@gmail.com",
+    "telefon": "0733.546.130",
+    "site": "www.parohiaacoperamantulmaaiciidomnului-titan.ro"
+  },
+  {
+    "id": "adormirea-maicii-domnului-malaxa",
+    "denumire": "Adormirea Maicii Domnului Malaxa",
+    "hram": "Adormirea Maicii Domnului",
+    "paroh": "Pr. Mugurel Cojocaru",
+    "adresa": "Str. Nicolae Roșu, Nr. 41, sector 3",
+    "email": "patermugurel1@yahoo.com",
+    "telefon": "0723.287.607",
+    "site": "www.parohiaadormireamaiciidomnului-malaxa.ro"
+  },
+  {
+    "id": "adormirea-maicii-domnului-titan",
+    "denumire": "Adormirea Maicii Domnului - Titan",
+    "hram": "Adormirea Maicii Domnului, Sf. Ierarh Spiridon",
+    "paroh": "Pr. Nicolae Fieraru",
+    "adresa": "Bd. 1 Decembrie 1918, Nr. 21, sector 3",
+    "email": "fieraru_nicolae@yahoo.com",
+    "telefon": "0724.557.100",
+    "site": "www.adormireamaiciidomnuluititan2.ro"
+  },
+  {
+    "id": "adormirea-sf-mercurie",
+    "denumire": "Adormirea Maicii Domnului și Sf. M. Mc. Mercurie",
+    "hram": "Adormirea Maicii Domnului, Sf. Mare Mc. Mercurie",
+    "paroh": "Pr. George-Alexandru Lepădatu",
+    "adresa": "Str. Constantin Brâncuși, Nr. 11, sector 3",
+    "email": "lepadatugeorge@gmail.com",
+    "telefon": "0733.002.222",
+    "site": "facebook.com/sfantulmercurie"
+  },
+  {
+    "id": "apostol",
+    "denumire": "Apostol",
+    "hram": "Sf. Împărați Constantin și Elena, Sfinții Apostoli Petru și Pavel",
+    "paroh": "Pr. Eugen Stoica",
+    "adresa": "Str. Nerva Traian, Nr. 18 A, sector 3",
+    "email": "pr.eugenstoica@yahoo.com",
+    "telefon": "0766.443.614",
+    "site": "www.bisericaapostol.ro"
+  },
+  {
+    "id": "balta-alba",
+    "denumire": "Balta Albă",
+    "hram": "Adormirea Maicii Domnului, Sf. Mc. Corneliu Sutașul",
+    "paroh": "Pr. Cătălin-Ionuț Grumeza",
+    "adresa": "Str. Brănești, Nr. 3, sector 3",
+    "email": "catalin_ionut_82@yahoo.com",
+    "telefon": "0768.897.951",
+    "site": "www.parohia-balta-alba.ro"
+  },
+  {
+    "id": "ceaus-radu",
+    "denumire": "Ceauș Radu",
+    "hram": "Sf. Ierarh Nicolae, Adormirea Maicii Domnului",
+    "paroh": "Pr. Cristian Emil Onea",
+    "adresa": "Str. Vulturilor, Nr. 5, sector 3",
+    "email": "prcristianonea@yahoo.com",
+    "telefon": "0788.053.430",
+    "site": "www.bisericaceausradu.ro"
+  },
+  {
+    "id": "coltea",
+    "denumire": "Colțea",
+    "hram": "Sf. Trei Ierarhi, Sf. Cuv. Parascheva, Sf. Mare Mc. Ecaterina",
+    "paroh": "Pr. Ciprian Ailioaei",
+    "adresa": "Bd. I. C. Brătianu, Nr. 1, sector 3",
+    "email": "ciprian_ailioaei@yahoo.com",
+    "telefon": "0722.761.001",
+    "site": "facebook.com/biserica.coltea.bucuresti"
+  },
+  {
+    "id": "delea-noua",
+    "denumire": "Delea Nouă",
+    "hram": "Buna Vestire, Sf. Arhangheli Mihail și Gavriil",
+    "paroh": "Pr. Valentin Fătu",
+    "adresa": "Str. Delea Nouă, Nr. 1, sector 3",
+    "email": "valentinfatu@yahoo.com",
+    "telefon": "0721.281.756",
+    "site": "www.bisericadeleanouacalist.ro"
+  },
+  {
+    "id": "doamna",
+    "denumire": "Doamna",
+    "hram": "Intrarea în Biserică a Maicii Domnului, Sf. Mc. Elefterie",
+    "paroh": "Pr. Cristian Ștefan",
+    "adresa": "Calea Victoriei, Nr. 28, sector 3",
+    "email": "teophanos@yahoo.com",
+    "telefon": "0744.100.198",
+    "site": "www.bisericadoamna.ro"
+  },
+  {
+    "id": "dobroteasa",
+    "denumire": "Dobroteasa",
+    "hram": "Buna Vestire, Sf. Cuv. Parascheva, Sf. Mc. Filofteia",
+    "paroh": "Pr. Liviu Barbu",
+    "adresa": "Bd. Mircea Vodă, Nr. 35, sector 3",
+    "email": "fr.liviu.barbu@gmail.com",
+    "telefon": "0770.255.030",
+    "site": "www.dobroteasa.ro"
+  },
+  {
+    "id": "dudesti-cioplea-1",
+    "denumire": "Dudești Cioplea I",
+    "hram": "Sf. Ierarh Nicolae",
+    "paroh": "Pr. Marius Constantin Marcoci",
+    "adresa": "Str. Ticuș, Nr. 1, sector 3",
+    "email": "marcoci_marius@yahoo.com",
+    "telefon": "0722.622.113",
+    "site": "www.dudesticioplea1.ro"
+  },
+  {
+    "id": "dudesti-cioplea-2",
+    "denumire": "Dudești Cioplea II",
+    "hram": "Adormirea Maicii Domnului",
+    "paroh": "Pr. Gheorghe Tronaru",
+    "adresa": "Bd. Camil Ressu, Nr. 38 A, sector 3",
+    "email": "tg1158tg@gmail.com",
+    "telefon": "0745.019.880",
+    "site": "www.parohiadudesticioplea2.ro"
+  },
+  {
+    "id": "foisor",
+    "denumire": "Foișor",
+    "hram": "Nașterea Maicii Domnului",
+    "paroh": "Pr. George-Florin Oprea",
+    "adresa": "Str. Foișorului, Nr. 119, sector 3",
+    "email": "pr.gheorghe@gmail.com",
+    "telefon": "0749.155.593",
+    "site": "www.bisericafoisor.ro"
+  },
+  {
+    "id": "foisor-2",
+    "denumire": "Foișor II",
+    "hram": "Acoperământul Maicii Domnului, Sf. Ierarh Grigorie Dascălu",
+    "paroh": "Pr. Victor Ionuț Duță",
+    "adresa": "Str. Foișorului, Nr. 1, sector 3",
+    "email": "ionut.duta@ymail.com",
+    "telefon": "0767.55.36.58",
+    "site": "www.bisericafoisorII.ro"
+  },
+  {
+    "id": "inaltarea-sfintei-cruci",
+    "denumire": "Înălțarea Sfintei Cruci",
+    "hram": "Sf. Prooroc Ilie Tesviteanul, Înălțarea Sfintei Cruci, Sf. Martiri Brâncoveni",
+    "paroh": "Pr. Zamfir Gheorghe Dincă",
+    "adresa": "Str. Stelian Mihale, Nr. 14, sector 3",
+    "email": "dincazgheorghe@yahoo.com",
+    "telefon": "0724.285.819",
+    "site": "www.bisericasfasntulilietitan.ro"
+  },
+  {
+    "id": "izvorul-nou",
+    "denumire": "Izvorul Nou",
+    "hram": "Izvorul Tămăduirii, Schimbarea la Față",
+    "paroh": "Pr. Stelian Ionașcu",
+    "adresa": "Șos. Mihai Bravu, Nr. 311, sector 3",
+    "email": "ionascust@yahoo.com",
+    "telefon": "0744.688.546",
+    "site": "www.izvorulnou.ro"
+  },
+  {
+    "id": "lucaci",
+    "denumire": "Lucaci",
+    "hram": "Sf. Cuv. Stelian Paflagonul, Sf. Arhangheli Mihail și Gavriil",
+    "paroh": "Pr. Andrei Mihai Zaieț",
+    "adresa": "Str. Logofătul Udriște, Nr. 6, sector 3",
+    "email": "zaietandrei@yahoo.com",
+    "telefon": "0727.190.714",
+    "site": "www.bisericasfstelian.ro"
+  },
+  {
+    "id": "mihai-bravu",
+    "denumire": "Mihai Bravu",
+    "hram": "Sf. Cuv. Paraschiva, Sf. Mc. Fanurie, Sfânta Treime",
+    "paroh": "Pr. Bogdan Matei",
+    "adresa": "Str. Cerceluș, Nr. 18, sector 3",
+    "email": "parohiamihaibravu@gmail.com",
+    "telefon": "0769.223.076",
+    "site": "www.fanurie.ro"
+  },
+  {
+    "id": "nasterea-domnului",
+    "denumire": "Nașterea Domnului",
+    "hram": "Nașterea Domnului, Sf. Mc. Sebastian",
+    "paroh": "Pr. Vasile Adrian Mărginean",
+    "adresa": "Str. Prieteniei, Nr. 6 A, sector 3",
+    "email": "pradrianmarginean@yahoo.com",
+    "telefon": "0722.741.531",
+    "site": "www.bisericanastereadomnului.ro"
+  },
+  {
+    "id": "negustori",
+    "denumire": "Negustori",
+    "hram": "Sf. Ierarh Nicolae",
+    "paroh": "Pr. Hotcoleanu Alin",
+    "adresa": "Str. Ștefan Teodor, Nr. 5, sector 3",
+    "email": "alinhotcoleanu@gmail.com",
+    "telefon": "0745.996.598",
+    "site": "www.bisericasfantulnicolaenegustori.ro"
+  },
+  {
+    "id": "pogorata-sf-duh",
+    "denumire": "Pogorârea Sf. Duh",
+    "hram": "Pogorârea Sfântului Duh",
+    "paroh": "Pr. Gabriel-Ștefan Pârvu",
+    "adresa": "Str. Liviu Rebreanu - Parc Titan, sector 3",
+    "email": "g_parvu@yahoo.com",
+    "telefon": "0733.067.395",
+    "site": "www.biserica_maramuresana_titan.ro"
+  },
+  {
+    "id": "razvan",
+    "denumire": "Răzvan",
+    "hram": "Adormirea Maicii Domnului, Sf. Mc. Filofteia",
+    "paroh": "Pr. Rusu Toderiță",
+    "adresa": "Str. Biserica Răzvan, Nr. 5, sector 3",
+    "email": "rozaliarusu@gmail.com",
+    "telefon": "0759.378.958",
+    "site": "www.biserica-razvan.ro"
+  },
+  {
+    "id": "scaune",
+    "denumire": "Scaune",
+    "hram": "Adormirea Maicii Domnului, Nașterea Maicii Domnului",
+    "paroh": "Pr. Jenică Danțiș",
+    "adresa": "Str. Scaune, Nr. 3, sector 3",
+    "email": "dantis.jenica@yahoo.com",
+    "telefon": "0745.762.585",
+    "site": "www.parohiascaune.ro"
+  },
+  {
+    "id": "sf-anton-curtea-veche",
+    "denumire": "Sf. Anton Curtea Veche",
+    "hram": "Sfântul Antonie cel Mare, Buna Vestire",
+    "paroh": "Pr. Gheorghe Zaharia",
+    "adresa": "Str. Franceză, Nr. 33, sector 3",
+    "email": "pr.zaharia@gmail.com",
+    "telefon": "0747.088.559",
+    "site": "www.biserica-sfantul-anton.ro"
+  },
+  {
+    "id": "sf-antonie-cel-mare",
+    "denumire": "Sf. Antonie cel Mare",
+    "hram": "Sf. Antonie cel Mare, Sf. Cuv. Antonie de la Iezer, Sf. Ierarh Nicolae",
+    "paroh": "Pr. Gavrilă Nicolae",
+    "adresa": "Str. Jean Steriadi, Nr. 19 A, sector 3",
+    "email": "gavrila_nicolae64@yahoo.com",
+    "telefon": "0745.319.352",
+    "site": "www.bisericasfantulantonie.ro"
+  },
+  {
+    "id": "sf-dumitru-posta",
+    "denumire": "Sf. Dumitru - Poștă",
+    "hram": "Sf. M. Mc. Dimitrie, Sf. Sfințit Mc. Haralambie, Sf. Mc. Pantelimon",
+    "paroh": "Pr. Mihai Gojgar",
+    "adresa": "Str. Franceză, Nr. 1, sector 3",
+    "email": "mihaigojgar@yahoo.com",
+    "telefon": "0727.394.631",
+    "site": "www.sfantuldumitruposta.ro"
+  },
+  {
+    "id": "sf-fecioará-maria",
+    "denumire": "Sf. Fecioară Maria",
+    "hram": "Nașterea Maicii Domnului, Sf. M. Mc. Teodor Stratilat",
+    "paroh": "Pr. Adrian Niță",
+    "adresa": "Str. Stan Județului, Nr. 6, sector 3",
+    "email": "adrian.nita7@gmail.com",
+    "telefon": "0749.288.889",
+    "site": "www.sfantafecioaramaria.ro"
+  },
+  {
+    "id": "sf-gheorghe-nou",
+    "denumire": "Sf. Gheorghe Nou",
+    "hram": "Sf. M. Mc. Gheorghe, Sf. Martiri Brâncoveni",
+    "paroh": "Pr. Nedelea Emil Cărămizaru",
+    "adresa": "Str. Cavafii Vechi, Nr. 6, sector 3",
+    "email": "emilcaramizaru@yahoo.com",
+    "telefon": "0723.600.400",
+    "site": "www.sfantulgheorghenou.ro"
+  },
+  {
+    "id": "sf-gheorghe-vechi",
+    "denumire": "Sf. Gheorghe Vechi",
+    "hram": "Sf. M. Mc. Gheorghe, Sf. M. Mc. Teodor Tiron, Sf. M. Mc. Dimitrie",
+    "paroh": "Pr. Sorin-Vasile Tancău",
+    "adresa": "Calea Moșilor, Nr. 36, sector 3",
+    "email": "sorintancau@yahoo.com",
+    "telefon": "0745.918.284",
+    "site": "www.sfantulgheorghe.ro"
+  },
+  {
+    "id": "sf-ierarh-calinic-titan",
+    "denumire": "Sf. Ierarh Calinic - Titan",
+    "hram": "Sf. Ierarh Calinic de la Cernica, Sf. Cuv. Paraschiva",
+    "paroh": "Pr. Liviu-Mihai Dinu",
+    "adresa": "Str. Câmpia Libertății, Nr. 68, sector 3",
+    "email": "dinu_mihai82@yahoo.com",
+    "telefon": "0728.024.768",
+    "site": "www.parohiasfantulierarhcalinictitan.blogspot.ro"
+  },
+  {
+    "id": "sf-ilie-hanul-coltei",
+    "denumire": "Sf. Ilie Hanul Colței",
+    "hram": "Sf. Prooroc Ilie Tesvitaenul",
+    "paroh": "Pr. Gabriel Grigorescu",
+    "adresa": "Str. Doamnei, Nr. 18, sector 3",
+    "email": "gabrigrig@yahoo.com",
+    "telefon": "0721.287.351",
+    "site": "www.sfantul-ilie.ro"
+  },
+  {
+    "id": "sf-ioan-piata",
+    "denumire": "Sf. Ioan - Piață",
+    "hram": "Tăierea Capului Sfântului Ioan Botezătorul, Sf. Ap. Filip",
+    "paroh": "Pr. Anatolii Scurtu",
+    "adresa": "Bd. I. C. Brătianu, Nr. 39, sector 3",
+    "email": "anatoliiscurtu@yahoo.com",
+    "telefon": "0721.407.650",
+    "site": "www.bisericasfantulioanpiata.ro"
+  },
+  {
+    "id": "sf-ioan-botezatorul",
+    "denumire": "Sf. Ioan Botezătorul",
+    "hram": "Sf. Ioan Botezătorul, Sf. Ap. Petru și Pavel",
+    "paroh": "Pr. Florin Busuioc",
+    "adresa": "Str. Râmnicu Sărat, Nr. 14, sector 3",
+    "email": "florinbusuioc.prof@gmail.com",
+    "telefon": "0725.679.159",
+    "site": "www.bisericapetrusipavel.ro"
+  },
+  {
+    "id": "sf-ioan-iacob-hozevitul",
+    "denumire": "Sf. Ioan Iacob Hozevitul",
+    "hram": "Sf. Ioan Iacob Hozevitul, Sf. Ierarh Alexandru",
+    "paroh": "Pr. Ilie Filip",
+    "adresa": "Str. Pictor Gheorghe Pătrașcu, Nr. 57, sector 3",
+    "email": "iliutafilip@yahoo.com",
+    "telefon": "0722.188.000",
+    "site": "www.parohia-sf-ioan-iacob-hozevitul.ro"
+  },
+  {
+    "id": "sf-mare-mucenic-gheorghe-titan",
+    "denumire": "Sf. Mare Mucenic Gheorghe",
+    "hram": "Sf. M. Mc. Gheorghe",
+    "paroh": "Pr. Adalbert Filipoiu",
+    "adresa": "Str. Postașului, Nr. 13, sector 3",
+    "email": "gabrielle787@yahoo.com",
+    "telefon": "0725.539.255",
+    "site": "www.sfantul-gheorghe-titan.ro"
+  },
+  {
+    "id": "sf-mina-vergu",
+    "denumire": "Sf. Mina - Vergu",
+    "hram": "Sf. M. Mc. Mina",
+    "paroh": "Pr. Gheorghe Ispas",
+    "adresa": "Str. C. F. Robescu, Nr. 12, sector 3",
+    "email": "contact@sfminavergu.ro",
+    "telefon": "0724.361.170",
+    "site": "www.sfminavergu.ro"
+  },
+  {
+    "id": "sf-nicolae-malaxa",
+    "denumire": "Sf. Nicolae - Malaxa",
+    "hram": "Sf. Ierarh Nicolae",
+    "paroh": "Pr. Daniel Petre",
+    "adresa": "Str. Tufănica, Nr. 5, sector 3",
+    "email": "daniel_mina83@yahoo.com",
+    "telefon": "0722.420.920",
+    "site": "www.parohiasfnicolaemalaxa.wordpress.com"
+  },
+  {
+    "id": "sf-nicolae-paraclis-universitar",
+    "denumire": "Sf. Nicolae - Paraclis Universitar",
+    "hram": "Sf. Ierarh Nicolae",
+    "paroh": "Pr. Vasile Gavrilă",
+    "adresa": "Str. Ion Ghica, Nr. 9, sector 3",
+    "email": "gavrilav2003@yahoo.com",
+    "telefon": "0762.608.303",
+    "site": "www.paraclisuluniversitar.ro"
+  },
+  {
+    "id": "sf-nicolae-selari",
+    "denumire": "Sf. Nicolae - Șelari",
+    "hram": "Sf. Ierarh Nicolae",
+    "paroh": "Pr. Costel Burnichi",
+    "adresa": "Str. Blănari, Nr. 16, sector 3",
+    "email": "prburnichi@gmail.com",
+    "telefon": "0728.083.818",
+    "site": "www.sfantulnicolaeselari.ro"
+  },
+  {
+    "id": "sf-stefan-calarasi",
+    "denumire": "Sf. Ștefan Călărași",
+    "hram": "Sf. Întâi Mc. și Arhidiac. Ștefan",
+    "paroh": "Pr. Constantin Raiciu",
+    "adresa": "Calea Călărași, Nr. 83, sector 3",
+    "email": "catalin.raiciu@gmail.com",
+    "telefon": "0725.046.633",
+    "site": "www.bisericasfantulstefan.ro"
+  },
+  {
+    "id": "sf-teodora-de-la-sihla-pallady",
+    "denumire": "Sf. Cuv. Teodora de la Sihla - Pallady",
+    "hram": "Sf. Cuv. Teodora de la Sihla, Sf. Mc. Bonifatie din Tars",
+    "paroh": "Pr. George Valentin Paraschiv",
+    "adresa": "Drumul Gura Caliței, Nr. 40-42, sector 3",
+    "email": "georgevalentin.paraschiv@gmail.com",
+    "telefon": "0767.649.888",
+    "site": ""
+  },
+  {
+    "id": "sf-treime-dudesti",
+    "denumire": "Sf. Treime - Dudești",
+    "hram": "Sf. Treime, Sf. Ierarh Calinic de la Cernica",
+    "paroh": "Pr. Daniel Nicușor Roșu",
+    "adresa": "Bd. Basarabia, Nr. 11, sector 3",
+    "email": "daniel_rosu_pr@yahoo.com",
+    "telefon": "0722.615.605",
+    "site": "www.sfantatreimedudesti.ro"
+  },
+  {
+    "id": "sf-vineri-herasca",
+    "denumire": "Sf. Vineri - Herasca",
+    "hram": "Sf. Cuv. Paraschiva",
+    "paroh": "Pr. Răzvan-Mihai Ciubotariu",
+    "adresa": "Str. Vineri, Nr. 98, sector 3",
+    "email": "razvanciubotariu@yahoo.com",
+    "telefon": "0740.905.568",
+    "site": "www.bisericasfantavineriherasca.ro"
+  },
+  {
+    "id": "sfintii-romani",
+    "denumire": "Sfinții Români",
+    "hram": "Duminica Sfinților Români, Acoperământul Maicii Domnului",
+    "paroh": "Pr. Ion Mărăcineanu",
+    "adresa": "Str. Trapezului, Nr. 3A, sector 3",
+    "email": "ionmaracineanu37@yahoo.com",
+    "telefon": "0723.567.498",
+    "site": "www.parohiasfintiiromani.ro"
+  },
+  {
+    "id": "soborul-maicii-domnului",
+    "denumire": "Soborul Maicii Domnului",
+    "hram": "Soborul Maicii Domnului, Sf. Cuv. Nicodim de la Tismana",
+    "paroh": "Pr. Valentin Dumitru Bușe",
+    "adresa": "Str. Vasile Goldiș, Nr. 1, sector 3",
+    "email": "nicoleta_eka@yahoo.com",
+    "telefon": "0724.304.504",
+    "site": "www.biserica-soborul-maicii-domnului.crestinortodox.ro"
+  },
+  {
+    "id": "tarca",
+    "denumire": "Târca",
+    "hram": "Înălțarea Domnului, Sf. Ierarh Teodosie de la Brazi",
+    "paroh": "Pr. Constantin-Marius Jica",
+    "adresa": "Calea Vitan, Nr. 142, sector 3",
+    "email": "mariusjica@yahoo.com",
+    "telefon": "0722.822.567",
+    "site": "www.parohiatarca-vitan.ro"
+  },
+  {
+    "id": "udricani",
+    "denumire": "Udricani",
+    "hram": "Sf. Ierarh Nicolae, Adormirea Maicii Domnului",
+    "paroh": "Pr. Constantin Pătuleanu",
+    "adresa": "Str. Iuliu Baraș, Nr. 11, sector 3",
+    "email": "cpatuleanu@yahoo.de",
+    "telefon": "0721.242.145",
+    "site": "www.udricani.ro"
+  },
+  {
+    "id": "zlatari",
+    "denumire": "Zlătari",
+    "hram": "Nașterea Maicii Domnului, Sf. M. Mc. Gheorghe, Sf. Sfințit Mc. Ciprian",
+    "paroh": "Pr. Neculai Dascălu",
+    "adresa": "Calea Victoriei, Nr. 12, sector 3",
+    "email": "nicolaedascalu@yahoo.com",
+    "telefon": "0731.042.270",
+    "site": "www.zlatari.ro"
+  }
+]

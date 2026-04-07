@@ -71,4 +71,32 @@ class AnalyticsService {
   Future<void> logAppOpenedFromNotification() async {
     await _analytics.logEvent(name: 'app_opened_from_notification');
   }
+
+  Future<void> logAcatistRequestScreenOpened() async {
+    await _analytics.logEvent(name: 'acatist_request_screen_opened');
+  }
+
+  Future<void> logAcatistRequestSubmitted({
+    required String parohieId,
+    required String durata,
+  }) async {
+    await _analytics.logEvent(
+      name: 'acatist_request_submitted',
+      parameters: {'parohie_id': parohieId, 'durata': durata},
+    );
+  }
+
+  Future<void> logAcatistRequestSuccess({required String parohieId}) async {
+    await _analytics.logEvent(
+      name: 'acatist_request_success',
+      parameters: {'parohie_id': parohieId},
+    );
+  }
+
+  Future<void> logAcatistRequestFailed({required String parohieId}) async {
+    await _analytics.logEvent(
+      name: 'acatist_request_failed',
+      parameters: {'parohie_id': parohieId},
+    );
+  }
 }

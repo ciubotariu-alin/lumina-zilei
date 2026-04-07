@@ -5,6 +5,7 @@ import '../config/feature_flags.dart';
 import '../providers/app_provider.dart';
 import '../theme/app_theme.dart';
 import 'settings_screen.dart';
+import 'acatist_request_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   final void Function(int index) onNavigate;
@@ -505,6 +506,81 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
 
+                // Acatist request card
+                if (FeatureFlags.acatistRequestEnabled)
+                  SliverToBoxAdapter(
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(16, 8, 16, 0),
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => const AcatistRequestScreen(),
+                            ),
+                          );
+                        },
+                        borderRadius: BorderRadius.circular(12),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: AppTheme.cardColor,
+                            borderRadius: BorderRadius.circular(12),
+                            border: Border.all(
+                              color: AppTheme.goldColor.withOpacity(0.35),
+                            ),
+                          ),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 16, vertical: 14),
+                          child: Row(
+                            children: [
+                              Container(
+                                width: 40,
+                                height: 40,
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: AppTheme.goldColor.withOpacity(0.1),
+                                ),
+                                child: const Icon(
+                                  Icons.church,
+                                  color: AppTheme.goldColor,
+                                  size: 20,
+                                ),
+                              ),
+                              const SizedBox(width: 12),
+                              Expanded(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'Cerere acatist la parohie',
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .titleSmall
+                                          ?.copyWith(fontSize: 13),
+                                    ),
+                                    const SizedBox(height: 2),
+                                    Text(
+                                      'Trimite o cerere de rugăciune către parohia ta',
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodySmall
+                                          ?.copyWith(fontSize: 11),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              const Icon(
+                                Icons.chevron_right,
+                                color: AppTheme.goldColor,
+                                size: 20,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+
                 // Donation card
                 if (FeatureFlags.donationsEnabled)
                   SliverToBoxAdapter(
@@ -565,8 +641,7 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
 
-                if (!FeatureFlags.donationsEnabled)
-                  const SliverToBoxAdapter(child: SizedBox(height: 28)),
+                const SliverToBoxAdapter(child: SizedBox(height: 28)),
               ],
             );
           },
