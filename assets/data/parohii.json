@@ -1,15 +1,5 @@
 [
   {
-    "id": "test",
-    "denumire": "Test Parohie",
-    "hram": "Test",
-    "paroh": "Alin Ciubotariu",
-    "adresa": "Campia Libertatii, 42",
-    "email": "ciubotariu.alin@gmail.com",
-    "telefon": "0784198098",
-    "site": "www.test.ro"
-  },
-  {
     "id": "acoperamantul-maicii-domnului-titan",
     "denumire": "Acoperământul Maicii Domnului - Titan",
     "hram": "Acoperământul Maicii Domnului, Sf. Cosma și Damian, Sf. Ierarh Calinic de la Cernica",

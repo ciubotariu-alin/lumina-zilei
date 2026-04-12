@@ -22,7 +22,6 @@ void main() async {
   // Initialize notifications
   final notificationService = NotificationService();
   await notificationService.initialize();
-  await notificationService.requestPermissions();
 
   // Initialize provider before runApp to avoid race condition with null data
   final appProvider = AppProvider();

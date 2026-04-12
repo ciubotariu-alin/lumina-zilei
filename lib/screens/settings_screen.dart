@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../providers/app_provider.dart';
 import '../services/analytics_service.dart';
 import '../services/notification_service.dart';
 import '../theme/app_theme.dart';
@@ -186,6 +188,66 @@ class _SettingsScreenState extends State<SettingsScreen> {
               ),
             ),
 
+            // Section: Afișare
+            SliverToBoxAdapter(
+              child: _buildSectionHeader(context, 'AFIȘARE'),
+            ),
+            SliverToBoxAdapter(
+              child: _buildCard(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(16, 14, 16, 14),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Mărime text',
+                          style: Theme.of(context).textTheme.titleSmall,
+                        ),
+                        const SizedBox(height: 4),
+                        Text(
+                          'Afectează textul din toată aplicația',
+                          style: Theme.of(context).textTheme.bodySmall,
+                        ),
+                        const SizedBox(height: 14),
+                        Consumer<AppProvider>(
+                          builder: (context, provider, _) {
+                            return Row(
+                              children: [
+                                _FontOption(
+                                  label: 'A',
+                                  description: 'Normal',
+                                  fontSize: 14,
+                                  selected: provider.fontScale == 1.0,
+                                  onTap: () => provider.setFontScale(1.0),
+                                ),
+                                const SizedBox(width: 10),
+                                _FontOption(
+                                  label: 'A',
+                                  description: 'Mediu',
+                                  fontSize: 17,
+                                  selected: provider.fontScale == 1.2,
+                                  onTap: () => provider.setFontScale(1.2),
+                                ),
+                                const SizedBox(width: 10),
+                                _FontOption(
+                                  label: 'A',
+                                  description: 'Mare',
+                                  fontSize: 21,
+                                  selected: provider.fontScale == 1.4,
+                                  onTap: () => provider.setFontScale(1.4),
+                                ),
+                              ],
+                            );
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+
             // Section: Aplicație
             SliverToBoxAdapter(
               child: _buildSectionHeader(context, 'APLICAȚIE'),
@@ -214,6 +276,67 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
             const SliverToBoxAdapter(child: SizedBox(height: 32)),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class _FontOption extends StatelessWidget {
+  final String label;
+  final String description;
+  final double fontSize;
+  final bool selected;
+  final VoidCallback onTap;
+
+  const _FontOption({
+    required this.label,
+    required this.description,
+    required this.fontSize,
+    required this.selected,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: GestureDetector(
+        onTap: onTap,
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 150),
+          padding: const EdgeInsets.symmetric(vertical: 12),
+          decoration: BoxDecoration(
+            color: selected
+                ? AppTheme.goldColor.withValues(alpha: 0.15)
+                : AppTheme.backgroundColor,
+            borderRadius: BorderRadius.circular(10),
+            border: Border.all(
+              color: selected ? AppTheme.goldColor : AppTheme.dividerColor,
+              width: selected ? 1.5 : 1,
+            ),
+          ),
+          child: Column(
+            children: [
+              Text(
+                label,
+                style: TextStyle(
+                  fontSize: fontSize,
+                  color: selected ? AppTheme.goldColor : AppTheme.textBrownColor,
+                  fontWeight: selected ? FontWeight.bold : FontWeight.normal,
+                ),
+              ),
+              const SizedBox(height: 4),
+              Text(
+                description,
+                style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                      color: selected
+                          ? AppTheme.goldColor
+                          : AppTheme.textBrownColor.withValues(alpha: 0.7),
+                      fontSize: 10,
+                    ),
+              ),
+            ],
+          ),
         ),
       ),
     );

@@ -13,6 +13,34 @@ class CalendarScreen extends StatefulWidget {
 
   @override
   State<CalendarScreen> createState() => _CalendarScreenState();
+
+  static void showDayDetails(
+      BuildContext context, DateTime date, CalendarDay? dayInfo) {
+    AnalyticsService().logCalendarDateSelected(date);
+    const romanianMonths = [
+      '', 'Ianuarie', 'Februarie', 'Martie', 'Aprilie', 'Mai', 'Iunie',
+      'Iulie', 'August', 'Septembrie', 'Octombrie', 'Noiembrie', 'Decembrie',
+    ];
+    final month = date.month >= 1 && date.month <= 12
+        ? romanianMonths[date.month]
+        : '';
+    final dateStr = '${date.day} $month ${date.year}';
+    final fastingFuture = context.read<AppProvider>().getFastingInfo(date);
+
+    showModalBottomSheet(
+      context: context,
+      backgroundColor: AppTheme.surfaceColor,
+      isScrollControlled: true,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+      ),
+      builder: (_) => _DayDetailSheet(
+        dateString: dateStr,
+        dayInfo: dayInfo,
+        fastingFuture: fastingFuture,
+      ),
+    );
+  }
 }
 
 class _CalendarScreenState extends State<CalendarScreen> {
@@ -221,25 +249,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
 
   void _showDayDetails(
       BuildContext context, DateTime date, CalendarDay? dayInfo) {
-    AnalyticsService().logCalendarDateSelected(date);
-    final month = date.month >= 1 && date.month <= 12 ? _romanianMonths[date.month] : '';
-    final dateStr = '${date.day} $month ${date.year}';
-    final fastingFuture =
-        context.read<AppProvider>().getFastingInfo(date);
-
-    showModalBottomSheet(
-      context: context,
-      backgroundColor: AppTheme.surfaceColor,
-      isScrollControlled: true,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
-      ),
-      builder: (_) => _DayDetailSheet(
-        dateString: dateStr,
-        dayInfo: dayInfo,
-        fastingFuture: fastingFuture,
-      ),
-    );
+    CalendarScreen.showDayDetails(context, date, dayInfo);
   }
 }
 

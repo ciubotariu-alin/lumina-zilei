@@ -65,11 +65,13 @@ class EmailJsService implements EmailService {
         },
       });
 
-      final response = await http.post(
-        Uri.parse(_sendUrl),
-        headers: {'Content-Type': 'application/json'},
-        body: body,
-      );
+      final response = await http
+          .post(
+            Uri.parse(_sendUrl),
+            headers: {'Content-Type': 'application/json'},
+            body: body,
+          )
+          .timeout(const Duration(seconds: 15));
 
       if (response.statusCode == 200) {
         return const EmailSuccess();

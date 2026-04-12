@@ -34,6 +34,9 @@ class AppProvider extends ChangeNotifier with WidgetsBindingObserver {
   bool _refreshing = false;
   bool _disposed = false;
 
+  double _fontScale = 1.0;
+  double get fontScale => _fontScale;
+
   DateTime get selectedDate => _selectedDate;
   Map<String, CalendarDay> get calendar => _calendar;
   List<PrayerCategory> get allPrayers => _allPrayers;
@@ -51,12 +54,23 @@ class AppProvider extends ChangeNotifier with WidgetsBindingObserver {
     return _bibleQuotes[_currentBibleIndex % _bibleQuotes.length];
   }
 
+  Future<void> setFontScale(double scale) async {
+    _fontScale = scale;
+    notifyListeners();
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setDouble('font_scale', scale);
+  }
+
   Future<void> init() async {
     WidgetsBinding.instance.addObserver(this);
 
     _isLoading = true;
     _error = null;
     notifyListeners();
+
+    // Load font scale before anything else so UI uses correct scale from start
+    final prefs = await SharedPreferences.getInstance();
+    _fontScale = prefs.getDouble('font_scale') ?? 1.0;
 
     try {
       _calendar = await _dataService.loadCalendar();

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import 'config/feature_flags.dart';
+import 'providers/app_provider.dart';
 import 'theme/app_theme.dart';
 import 'screens/home_screen.dart';
 import 'screens/calendar_screen.dart';
@@ -13,11 +15,21 @@ class OrtodoxApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Lumina Zilei',
-      debugShowCheckedModeBanner: false,
-      theme: AppTheme.lightTheme,
-      home: const MainNavigator(),
+    return Consumer<AppProvider>(
+      builder: (context, provider, child) {
+        return MaterialApp(
+          title: 'Lumina Zilei',
+          debugShowCheckedModeBanner: false,
+          theme: AppTheme.lightTheme,
+          builder: (context, child) => MediaQuery(
+            data: MediaQuery.of(context).copyWith(
+              textScaler: TextScaler.linear(provider.fontScale),
+            ),
+            child: child!,
+          ),
+          home: const MainNavigator(),
+        );
+      },
     );
   }
 }

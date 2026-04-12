@@ -158,7 +158,10 @@ class _AcatistRequestScreenState extends State<AcatistRequestScreen> {
   @override
   Widget build(BuildContext context) {
     return PopScope(
-      canPop: !_sending,
+      canPop: _step == 0 && !_sending,
+      onPopInvokedWithResult: (didPop, _) {
+        if (!didPop && _step > 0) _goToStep(_step - 1);
+      },
       child: Scaffold(
         backgroundColor: AppTheme.backgroundColor,
         appBar: AppBar(
